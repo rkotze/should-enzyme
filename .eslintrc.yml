@@ -1,0 +1,23 @@
+extends:
+  - "eslint-config-google"
+  - "eslint:recommended"
+
+env:
+  commonjs: true
+  mocha: true
+  es6: true
+  browser: true
+
+globals:
+  should: true
+
+parserOptions:
+  sourceType: "module"
+  impliedStrict: true
+  ecmaVersion: 7
+
+rules:
+  linebreak-style:
+    - 0
+  semi:
+    - 2
