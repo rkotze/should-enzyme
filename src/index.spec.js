@@ -7,10 +7,10 @@ const ClassNameFixture = () => (
 );
 
 describe('Should enzyme', () => {
-	const shouldEnzyme = should;
+  const shouldEnzyme = should;
 
   it('should have new method className', () => {
-  	shouldEnzyme.should.have.property('className');
+    shouldEnzyme.should.have.property('className');
   });
 
   it('should contain class name "special" in ClassNameFixture', () => {
@@ -22,4 +22,11 @@ describe('Should enzyme', () => {
     const wrapper = shallow(<ClassNameFixture />);
     wrapper.should.not.have.className('pizza');
   });
+
+  it('assert should fail to see useful error message', () => {
+    const wrapper = shallow(<ClassNameFixture />);
+    (() => wrapper.should.have.className('pizza'))
+    .should.throwError(/expected 'div' to have className 'pizza' but got 'special'/);
+  });
+  
 });

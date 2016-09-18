@@ -1,6 +1,13 @@
 extends:
   - "eslint-config-google"
   - "eslint:recommended"
+  - "plugin:react/recommended"
+
+parser: "babel-eslint"
+
+plugins:
+  - react
+  - mocha
 
 env:
   commonjs: true
@@ -15,9 +22,15 @@ parserOptions:
   sourceType: "module"
   impliedStrict: true
   ecmaVersion: 7
+  ecmaFeatures:
+    jsx: true
 
 rules:
   linebreak-style:
     - 0
+  react/prop-types:
+    - 1
+  react/no-danger:
+    - 1
   semi:
     - 2

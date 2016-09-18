@@ -6,10 +6,9 @@ Assertion.add('className', function () {
 	const wrapper = this.obj;
 
 	this.params = { 
-		obj: wrapper.prop('className'), 
-		operator: `to have className`, 
-		expected: arguments[0] 
+		obj: wrapper.type(), 
+		operator: `to have className '${arguments[0]}' but got '${wrapper.prop('className')}'`
 	};
 
-	should(wrapper.hasClass(arguments[0])).be.exactly(true);
+	should(wrapper.hasClass(arguments[0])).be.exactly(true, ' ');
 });
