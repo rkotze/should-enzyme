@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Useful functions for testing React Components with enzyme",
   "scripts": {
-    "test": "npm run js-style && mocha -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test": "npm run js-style && mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test-lazy": "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "test:w": "npm run js-style && mocha -r should -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
@@ -40,6 +41,7 @@
     "eslint-config-google": "^0.6.0",
     "eslint-plugin-mocha": "^4.5.1",
     "eslint-plugin-react": "^6.2.2",
+    "jsdom": "^9.5.0",
     "mocha": "^3.0.2",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
