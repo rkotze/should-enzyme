@@ -6,6 +6,8 @@ function WrapperBuilder(wrapper) {
 
   if(wrapper instanceof ReactWrapper)
     return new ReactEnzyme(wrapper);
+
+  throw new Error('Not a recognised Enzyme wrapper.');
 }
 
 function ShallowEnzyme() { }

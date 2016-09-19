@@ -21,4 +21,11 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 
     WrapperBuilder(wrapper).should.be.instanceOf(ReactEnzyme);
   });
+
+  it('anything else should throw an error', () => {
+    (() => {
+      WrapperBuilder(Fixture);
+    }).should.throwError(/Not a recognised Enzyme wrapper\./);
+  });
+
 });
