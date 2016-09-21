@@ -1,4 +1,5 @@
 import {ShallowWrapper, ReactWrapper} from 'enzyme';
+import ShallowEnzyme from './shallow-enzyme';
 
 function WrapperBuilder(wrapper) {
   if(wrapper instanceof ShallowWrapper)
@@ -10,12 +11,9 @@ function WrapperBuilder(wrapper) {
   throw new Error('Not a recognised Enzyme wrapper.');
 }
 
-function ShallowEnzyme() { }
-
 function ReactEnzyme () { }
 
 export {
   WrapperBuilder as default,
-  ShallowEnzyme,
   ReactEnzyme
 };
