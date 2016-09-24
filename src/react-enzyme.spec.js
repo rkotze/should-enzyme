@@ -20,10 +20,10 @@ describe('React enzyme wrapper', () => {
     reactWrapper.enzyme.should.be.instanceOf(ReactWrapper);
   });
 
-  // it('should return true when checking for "testCssClass"', () => {
-  //   reactWrapper.should.have.property('hasClass');
-  //   reactWrapper.hasClass('testCssClass').should.be.true();
-  // });
+  it('should return true when checking for "testCssClass"', () => {
+    reactWrapper.should.have.property('hasClass');
+    reactWrapper.hasClass('testCssClass').should.be.true();
+  });
 
   // it('should return false when checking for "cssClass"', () => {
   //   reactWrapper.should.have.property('hasClass');
