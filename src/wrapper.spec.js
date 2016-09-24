@@ -1,5 +1,6 @@
-import WrapperBuilder, { ReactEnzyme } from './wrapper';
+import WrapperBuilder from './wrapper';
 import ShallowEnzyme from './shallow-enzyme';
+import ReactEnzyme from './react-enzyme';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
