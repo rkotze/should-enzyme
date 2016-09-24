@@ -45,4 +45,5 @@ describe('Should enzyme add check hasClass', () => {
       wrapper.find('div').should.have.className('special');
     });
   });
+
 });
