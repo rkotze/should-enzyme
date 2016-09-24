@@ -35,4 +35,9 @@ describe('Shallow enzyme wrapper', () => {
     shallowWrapper.classNames().should.equal('testCssClass newClass');
   });
 
+  it('should have type div', () => {
+    shallowWrapper.should.have.property('type');
+    shallowWrapper.type().should.equal('div');
+  });
+
 });

@@ -10,4 +10,8 @@ export default class ShallowEnzyme {
   classNames() {
     return this.enzyme.prop('className');
   }
+
+  type() {
+    return this.enzyme.type();
+  }
 }

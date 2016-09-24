@@ -40,4 +40,9 @@ describe('React enzyme wrapper', () => {
     reactWrapper.classNames().should.equal('testCssClass newClass');
   });
 
+  it('should have type div', () => {
+    reactWrapper.should.have.property('type');
+    reactWrapper.type().should.equal('div');
+  });
+
 });

@@ -22,4 +22,8 @@ export default class ReactEnzyme {
   classNames() {
     return this.wrapper.prop('className');
   }
+
+  type() {
+    return this.wrapper.type();
+  }
 }
