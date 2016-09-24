@@ -1,15 +1,7 @@
-import should from 'should';
+// import should from 'should';
 import WrapperBuilder from './wrapper';
+import { boolAssertBuilder } from './assertions/assertion-builder';
 
-const Assertion = should.Assertion;
-
-Assertion.add('className', function () { 
-	const wrapper = WrapperBuilder(this.obj);
-  
-	this.params = { 
-		obj: wrapper.type(), 
-		operator: `to have className '${arguments[0]}' but found '${wrapper.classNames()}'`
-	};
-
-	should(wrapper.hasClass(arguments[0])).be.exactly(true, ' ');
-});
+boolAssertBuilder('className', WrapperBuilder, (expected, wrapper) => {
+  return `to have className '${expected}' but found '${wrapper.classNames()}'`;
+}, 'hasClass');
