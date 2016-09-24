@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Useful functions for testing React Components with enzyme",
   "scripts": {
-    "test": "npm run js-style && mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test-lazy": "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test:w": "npm run js-style && mocha -r should ./test-setup/jsdom.js -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test-lazy": "mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:w": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
     "compile": "babel -d lib/ src/ --ignore *spec.js",
@@ -47,6 +47,7 @@
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.1",
     "should": "^11.1.0",
+    "should-sinon": "0.0.5",
     "sinon": "^1.17.6"
   },
   "bugs": {
