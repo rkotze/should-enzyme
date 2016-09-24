@@ -9,20 +9,27 @@ const Fixture = () => (
   <div>Content here</div>
 );
 
-describe('Assertion builder', () => {
+describe('Boolean assertion builder', () => {
   let assertionAddSpy,
   wrapperBuilderSpy,
   renderDom,
-  wrapperProps;
+  wrapperProps,
+  assertMessageFnSpy,
+  assertMessageFn = function(expected, wrapper) {
+    return `to have ${expected} but got ${wrapper.classNames()}`;
+  };
 
   before(() => {
     wrapperProps = { 
-      awesome: sinon.stub().returns(true) 
+      type: sinon.stub().returns('div'),
+      awesome: sinon.stub().returns(true),
+      classNames: sinon.stub().returns('css classes')
     };
     assertionAddSpy = sinon.spy(should.Assertion, 'add');
     wrapperBuilderSpy = sinon.stub().returns(wrapperProps);
-    
-    boolAssertBuilder('awesome', wrapperBuilderSpy);
+    assertMessageFnSpy = sinon.spy(assertMessageFn);
+
+    boolAssertBuilder('awesome', wrapperBuilderSpy, assertMessageFnSpy);
     renderDom = shallow(<Fixture />);
     renderDom.should.be.awesome('stuff');
   });
@@ -32,8 +39,8 @@ describe('Assertion builder', () => {
   });
 
   it('call Assertion.add with "awesome"', () => {
-    assertionAddSpy.calledOnce.should.be.true();
-    assertionAddSpy.calledWith('awesome', sinon.match.func);
+    assertionAddSpy.should.be.calledOnce();
+    assertionAddSpy.should.be.calledWith('awesome', sinon.match.func);
   });
 
   it('call WrapperBuilder with an object', () => {
@@ -45,5 +52,16 @@ describe('Assertion builder', () => {
     wrapperProps.awesome.should.be.calledOnce();
     wrapperProps.awesome.should.be.calledWith(sinon.match.string);
   });
+
+  it('callback should be called to set error message', () => {
+    assertMessageFnSpy.should.be.calledWith('stuff', sinon.match.object);
+  });
+
+  it('on callback wrapper method type and classNames should be called', () => {
+    wrapperProps.type.should.be.calledOnce();
+    wrapperProps.classNames.should.be.calledOnce();
+  });
+
+//todo: provide overriding method name
 
 });
