@@ -19,7 +19,7 @@ export default class ReactEnzyme {
     return this.wrapper.hasClass(className);
   }
 
-  // classNames() {
-  //   return this.enzyme.prop('className');
-  // }
+  classNames() {
+    return this.wrapper.prop('className');
+  }
 }
