@@ -1,4 +1,4 @@
-import {ShallowWrapper, ReactWrapper} from 'enzyme';
+import { ShallowWrapper, ReactWrapper } from 'enzyme';
 import ShallowEnzyme from './shallow-enzyme';
 
 function WrapperBuilder(wrapper) {

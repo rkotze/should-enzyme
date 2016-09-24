@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
 
 const Fixture = () => (
-  <div className="testCssClass">Content here</div>
+  <div className="testCssClass newClass">Content here</div>
 );
 
 describe('Shallow enzyme wrapper', () => {
@@ -15,7 +15,7 @@ describe('Shallow enzyme wrapper', () => {
     shallowWrapper = new ShallowEnzyme(wrapper);
   });
 
-  it('should have a public prop of enzyme and instance of WhallowWrapper', () => {
+  it('should have a public prop of enzyme and instance of ShallowWrapper', () => {
     shallowWrapper.should.have.property('enzyme');
     shallowWrapper.enzyme.should.be.instanceOf(ShallowWrapper);
   });
@@ -23,6 +23,16 @@ describe('Shallow enzyme wrapper', () => {
   it('should return true when checking for "testCssClass"', () => {
     shallowWrapper.should.have.property('hasClass');
     shallowWrapper.hasClass('testCssClass').should.be.true();
+  });
+
+  it('should return false when checking for "cssClass"', () => {
+    shallowWrapper.should.have.property('hasClass');
+    shallowWrapper.hasClass('cssClass').should.be.false();
+  });
+
+  it('should return a string of classNames for the element', () => {
+    shallowWrapper.should.have.property('classNames');
+    shallowWrapper.classNames().should.equal('testCssClass newClass');
   });
 
 });
