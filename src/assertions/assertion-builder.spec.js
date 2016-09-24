@@ -34,6 +34,10 @@ describe('Boolean assertion builder', () => {
     renderDom.should.be.awesome('stuff');
   });
 
+  afterEach(() => {
+    assertionAddSpy.reset();
+  });
+
   after(() => {
     assertionAddSpy.restore();
   });
@@ -44,8 +48,8 @@ describe('Boolean assertion builder', () => {
   });
 
   it('call WrapperBuilder with an object', () => {
-    wrapperBuilderSpy.calledOnce.should.be.true();
-    wrapperBuilderSpy.calledWith(sinon.match.object).should.be.true();
+    wrapperBuilderSpy.should.be.calledOnce();
+    wrapperBuilderSpy.should.be.calledWith(sinon.match.object);
   });
 
   it('should call the awesome method on wrapper', () => {
@@ -62,6 +66,10 @@ describe('Boolean assertion builder', () => {
     wrapperProps.classNames.should.be.calledOnce();
   });
 
-//todo: provide overriding method name
+  it('override the name with a name that matches the wrapper', () => {
+    boolAssertBuilder('awesome', wrapperBuilderSpy, assertMessageFnSpy, 'moreAwesome');
+    assertionAddSpy.should.be.calledOnce();
+    assertionAddSpy.should.be.calledWith('moreAwesome', sinon.match.func);
+  });
 
 });

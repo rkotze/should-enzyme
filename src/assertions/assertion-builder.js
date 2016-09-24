@@ -2,8 +2,9 @@ import should from 'should';
 
 const Assertion = should.Assertion;
 
-export function boolAssertBuilder(name, wrapperBuilder, assertMessageFn) {
-  Assertion.add(name, function() {
+export function boolAssertBuilder(name, wrapperBuilder, assertMessageFn, overrideName) {
+  const assertName = overrideName ? overrideName : name;
+  Assertion.add(assertName, function() {
     const wrapper = wrapperBuilder(this.obj);
 
     this.params = {
@@ -11,6 +12,6 @@ export function boolAssertBuilder(name, wrapperBuilder, assertMessageFn) {
       operator: assertMessageFn(arguments[0], wrapper)
     };
 
-    should(wrapper[name](arguments[0])).be.true(' ');
+    should(wrapper[assertName](arguments[0])).be.true(' ');
   });
 }
