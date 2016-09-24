@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 const ClassNameFixture = () => (
-  <div className="special">Content here</div>
+  <div className="special burger">Content here</div>
 );
 
 describe('Should enzyme add check hasClass', () => {
@@ -30,7 +30,7 @@ describe('Should enzyme add check hasClass', () => {
 
     it('assert should fail to see useful error message', () => {
       (() => wrapper.should.have.className('pizza'))
-      .should.throwError(/expected 'div' to have className 'pizza' but got 'special'/);
+      .should.throwError(/expected 'div' to have className 'pizza' but found 'special burger'/);
     });
   });
 
