@@ -4,7 +4,7 @@
 
 1. [Install](#install)
 1. [Assertions](#assertions)
-	1. [`className(string)`](#classNamestring)
+	1. [`className(string)`](#classnamestring)
 
 ## Install
 

@@ -4,8 +4,10 @@ import ReactEnzyme from './react-enzyme';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
-const Fixture = () => (
-  <div className="testCssClass newClass">Content here</div>
+const Fixture = (props) => (
+  <div {...props} className="testCssClass newClass">
+  Content here
+  </div>
 );
 
 describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
@@ -35,7 +37,7 @@ describe('Different enzyme render method', () => {
   [shallow, mount].forEach((renderMethod, i) => {
     let wrapper;
     before(() => {
-      wrapper = WrapperBuilder(renderMethod(<Fixture />));
+      wrapper = WrapperBuilder(renderMethod(<Fixture myData="free" />));
     });
 
     it(`${methodNames[i]} should return true when checking for "testCssClass"`, () => {
@@ -56,6 +58,24 @@ describe('Different enzyme render method', () => {
     it(`${methodNames[i]} should have type div`, () => {
       wrapper.should.have.property('type');
       wrapper.type().should.equal('div');
+    });
+
+    it(`${methodNames[i]} should check if prop "myData" exists`, () => {
+      wrapper.should.have.property('prop');
+      wrapper.prop('myData').should.be.true();
+    });
+
+    it(`${methodNames[i]} should be false "noData" does not exist`, () => {
+      wrapper.should.have.property('prop');
+      wrapper.prop('noData').should.be.false();
+    });
+
+    it(`${methodNames[i]} should check if prop "myData" value is "free"`, () => {
+      wrapper.prop('myData', 'free').should.be.true();
+    });
+
+    it(`${methodNames[i]} should be false if prop "myData" value is "other"`, () => {
+      wrapper.prop('myData', 'other').should.be.false();
     });
   });
 });
