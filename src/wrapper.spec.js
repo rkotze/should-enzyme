@@ -5,7 +5,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 const Fixture = () => (
-  <div>Content here</div>
+  <div className="testCssClass newClass">Content here</div>
 );
 
 describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
@@ -28,4 +28,34 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
     }).should.throwError(/Not a recognised Enzyme wrapper\./);
   });
 
+});
+
+describe('Different enzyme render method', () => {
+  const methodNames = ['shallow', 'mount'];
+  [shallow, mount].forEach((renderMethod, i) => {
+    let wrapper;
+    before(() => {
+      wrapper = WrapperBuilder(renderMethod(<Fixture />));
+    });
+
+    it(`${methodNames[i]} should return true when checking for "testCssClass"`, () => {
+      wrapper.should.have.property('hasClass');
+      wrapper.hasClass('testCssClass').should.be.true();
+    });
+
+    it(`${methodNames[i]} should return false when checking for "cssClass"`, () => {
+      wrapper.should.have.property('hasClass');
+      wrapper.hasClass('cssClass').should.be.false();
+    });
+
+    it(`${methodNames[i]} should return a string of classNames for the element`, () => {
+      wrapper.should.have.property('classNames');
+      wrapper.classNames().should.equal('testCssClass newClass');
+    });
+
+    it(`${methodNames[i]} should have type div`, () => {
+      wrapper.should.have.property('type');
+      wrapper.type().should.equal('div');
+    });
+  });
 });

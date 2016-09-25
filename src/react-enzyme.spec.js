@@ -20,29 +20,9 @@ describe('React enzyme wrapper', () => {
     reactWrapper.enzyme.should.be.instanceOf(ReactWrapper);
   });
 
-  it('should return true when checking for "testCssClass"', () => {
-    reactWrapper.should.have.property('hasClass');
-    reactWrapper.hasClass('testCssClass').should.be.true();
-  });
-
   it('should have prop that gets the parent node as react wrapper', () => {
     reactWrapper.should.have.property('wrapper');
     reactWrapper.wrapper.should.be.instanceOf(ReactWrapper);
-  });
-
-  it('should return false when checking for "cssClass"', () => {
-    reactWrapper.should.have.property('hasClass');
-    reactWrapper.hasClass('cssClass').should.be.false();
-  });
-
-  it('should return a string of classNames for the element', () => {
-    reactWrapper.should.have.property('classNames');
-    reactWrapper.classNames().should.equal('testCssClass newClass');
-  });
-
-  it('should have type div', () => {
-    reactWrapper.should.have.property('type');
-    reactWrapper.type().should.equal('div');
   });
 
 });
