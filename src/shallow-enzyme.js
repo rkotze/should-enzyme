@@ -1,5 +1,8 @@
-export default class ShallowEnzyme {
+import BaseEnzyme from './base-enzyme';
+
+export default class ShallowEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
+    super();
     this.enzyme = enzymeWrapper;
   }
 
@@ -7,15 +10,4 @@ export default class ShallowEnzyme {
     return this.enzyme;
   }
 
-  hasClass(className) {
-    return this.enzyme.hasClass(className);
-  }
-
-  classNames() {
-    return this.enzyme.prop('className');
-  }
-
-  type() {
-    return this.enzyme.type();
-  }
 }
