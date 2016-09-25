@@ -1,7 +1,21 @@
 # should-enzyme
 
-## Instructions:
+[should.js](https://shouldjs.github.io/) assertions for [enzyme](https://github.com/airbnb/enzyme)
 
-Install: `npm i`
+1. [Install](#install)
+1. [Assertions](#assertions)
+	1. [`className(string)`](#classNamestring)
 
-`npm test` - unit tests and eslint
+## Install
+
+`npm i should-enzyme`
+
+## Assertions
+
+### `className(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper has css class. 
