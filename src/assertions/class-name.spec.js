@@ -1,4 +1,4 @@
-import './index';
+import './class-name';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
@@ -9,15 +9,15 @@ const ClassNameFixture = () => (
 describe('Should enzyme add check hasClass', () => {
   const shouldEnzyme = should;
 
+  it('should have new method className', () => {
+    shouldEnzyme.should.have.property('className');
+  });
+
   context('using ShallowWrapper', () => {
     let wrapper;
 
     before(() => {
       wrapper = shallow(<ClassNameFixture />);
-    });
-
-    it('should have new method className', () => {
-      shouldEnzyme.should.have.property('className');
     });
 
     it('should contain class name "special" in ClassNameFixture', () => {
