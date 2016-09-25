@@ -42,7 +42,7 @@ describe('Should enzyme add check hasClass', () => {
     });
 
     it('should contain class name "special" in ClassNameFixture wrapping div', () => {
-      wrapper.find('div').should.have.className('special');
+      wrapper.should.have.className('special');
     });
   });
 

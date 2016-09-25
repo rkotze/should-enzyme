@@ -20,6 +20,11 @@ describe('Shallow enzyme wrapper', () => {
     shallowWrapper.enzyme.should.be.instanceOf(ShallowWrapper);
   });
 
+  it('should have prop that gets the parent node as shallow wrapper', () => {
+    shallowWrapper.should.have.property('wrapper');
+    shallowWrapper.wrapper.should.be.instanceOf(ShallowWrapper);
+  });
+
   it('should return true when checking for "testCssClass"', () => {
     shallowWrapper.should.have.property('hasClass');
     shallowWrapper.hasClass('testCssClass').should.be.true();

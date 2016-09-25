@@ -3,6 +3,10 @@ export default class ShallowEnzyme {
     this.enzyme = enzymeWrapper;
   }
 
+  get wrapper () {
+    return this.enzyme;
+  }
+
   hasClass(className) {
     return this.enzyme.hasClass(className);
   }
