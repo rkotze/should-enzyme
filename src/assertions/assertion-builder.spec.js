@@ -30,7 +30,7 @@ describe('Boolean assertion builder', () => {
     wrapperBuilderSpy = sinon.stub().returns(wrapperProps);
     assertMessageFnSpy = sinon.spy(assertMessageFn);
 
-    boolAssertBuilder('awesome', wrapperBuilderSpy, assertMessageFnSpy);
+    boolAssertBuilder('awesome', assertMessageFnSpy, null, wrapperBuilderSpy);
     renderDom = shallow(<Fixture />);
     renderDom.should.be.awesome('stuff');
   });
@@ -68,7 +68,7 @@ describe('Boolean assertion builder', () => {
   });
 
   it('map assert name to wrapper method name', () => {
-    boolAssertBuilder('awesome', wrapperBuilderSpy, assertMessageFnSpy, 'moreAwesome');
+    boolAssertBuilder('awesome', assertMessageFnSpy, 'moreAwesome', wrapperBuilderSpy);
     
     renderDom.should.be.awesome('stuff');
 
