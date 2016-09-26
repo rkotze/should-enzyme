@@ -72,7 +72,7 @@ describe('Boolean assertion builder', () => {
 
   it('callback should be called to set error message', () => {
     renderDom.should.be.awesome('stuff');
-    assertMessageFnSpy.should.be.calledWith('stuff', sinon.match.object);
+    assertMessageFnSpy.should.be.calledWith(['stuff'], sinon.match.object);
   });
 
   it('on callback wrapper method type and classNames should be called', () => {
