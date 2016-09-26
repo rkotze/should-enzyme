@@ -60,22 +60,27 @@ describe('Different enzyme render method', () => {
       wrapper.type().should.equal('div');
     });
 
-    it(`${methodNames[i]} should check if prop "id" exists`, () => {
+    it(`${methodNames[i]} should get prop "id" value of "free"`, () => {
       wrapper.should.have.property('prop');
-      wrapper.prop('id').should.be.true();
+      wrapper.prop('id').should.equal('free');
+    });
+
+    it(`${methodNames[i]} should check if prop "id" exists`, () => {
+      wrapper.should.have.property('hasProp');
+      wrapper.hasProp('id').should.be.true();
     });
 
     it(`${methodNames[i]} should be false "noData" does not exist`, () => {
-      wrapper.should.have.property('prop');
-      wrapper.prop('noData').should.be.false();
+      wrapper.should.have.property('hasProp');
+      wrapper.hasProp('noData').should.be.false();
     });
 
     it(`${methodNames[i]} should check if prop "id" value is "free"`, () => {
-      wrapper.prop('id', 'free').should.be.true();
+      wrapper.hasProp('id', 'free').should.be.true();
     });
 
     it(`${methodNames[i]} should be false if prop "id" value is "other"`, () => {
-      wrapper.prop('id', 'other').should.be.false();
+      wrapper.hasProp('id', 'other').should.be.false();
     });
   });
 });

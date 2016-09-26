@@ -29,13 +29,26 @@ describe('Should enzyme add prop', () => {
       wrapper.should.have.prop('id');
     });
 
+    it('should have prop "id" with value "content" in PropFixture', () => {
+      wrapper.should.have.prop('id', 'content');
+    });
+
     it('should NOT have prop "pizza" in PropFixture', () => {
       wrapper.should.not.have.prop('pizza');
     });
 
-    it('assert should fail to see useful error message', () => {
+    it('should have prop "id" but NOT with value "stuff" in PropFixture', () => {
+      wrapper.should.not.have.prop('id', 'stuff');
+    });
+
+    it('should fail to see useful error message for missing pizza prop', () => {
       (() => wrapper.should.have.prop('pizza'))
       .should.throwError(/expected 'div' to have prop 'pizza'/);
+    });
+
+    it('should fail to see useful error message for incorrect expected prop value', () => {
+      (() => wrapper.should.have.prop('id', 'stuff'))
+      .should.throwError(/expected 'div' prop 'id' to have value 'stuff', instead found 'content'/);
     });
   });
 
@@ -49,6 +62,7 @@ describe('Should enzyme add prop', () => {
     it('should have prop "someThing" in PropFixture', () => {
       wrapper.should.have.prop('someThing');
     });
+
   });
 
 });

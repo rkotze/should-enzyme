@@ -9,11 +9,15 @@ export default class BaseEnzyme {
     return this.wrapper.hasClass(className);
   }
 
-  prop(propName, propValue) {
+  hasProp(key, propValue) {
     if(propValue)
-      return this.enzyme.prop(propName) === propValue;
+      return this.enzyme.prop(key) === propValue;
 
-    return typeof this.enzyme.prop(propName) !== 'undefined';
+    return typeof this.enzyme.prop(key) !== 'undefined';
+  }
+
+  prop(key) {
+    return this.enzyme.prop(key);
   }
 
   type() {
