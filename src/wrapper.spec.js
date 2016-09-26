@@ -37,7 +37,7 @@ describe('Different enzyme render method', () => {
   [shallow, mount].forEach((renderMethod, i) => {
     let wrapper;
     before(() => {
-      wrapper = WrapperBuilder(renderMethod(<Fixture myData="free" />));
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" />));
     });
 
     it(`${methodNames[i]} should return true when checking for "testCssClass"`, () => {
@@ -60,9 +60,9 @@ describe('Different enzyme render method', () => {
       wrapper.type().should.equal('div');
     });
 
-    it(`${methodNames[i]} should check if prop "myData" exists`, () => {
+    it(`${methodNames[i]} should check if prop "id" exists`, () => {
       wrapper.should.have.property('prop');
-      wrapper.prop('myData').should.be.true();
+      wrapper.prop('id').should.be.true();
     });
 
     it(`${methodNames[i]} should be false "noData" does not exist`, () => {
@@ -70,12 +70,12 @@ describe('Different enzyme render method', () => {
       wrapper.prop('noData').should.be.false();
     });
 
-    it(`${methodNames[i]} should check if prop "myData" value is "free"`, () => {
-      wrapper.prop('myData', 'free').should.be.true();
+    it(`${methodNames[i]} should check if prop "id" value is "free"`, () => {
+      wrapper.prop('id', 'free').should.be.true();
     });
 
-    it(`${methodNames[i]} should be false if prop "myData" value is "other"`, () => {
-      wrapper.prop('myData', 'other').should.be.false();
+    it(`${methodNames[i]} should be false if prop "id" value is "other"`, () => {
+      wrapper.prop('id', 'other').should.be.false();
     });
   });
 });
