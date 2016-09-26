@@ -11,9 +11,9 @@ export default class BaseEnzyme {
 
   prop(propName, propValue) {
     if(propValue)
-      return this.wrapper.prop(propName) === propValue;
-    
-    return typeof this.wrapper.prop(propName) !== 'undefined';
+      return this.enzyme.prop(propName) === propValue;
+
+    return typeof this.enzyme.prop(propName) !== 'undefined';
   }
 
   type() {

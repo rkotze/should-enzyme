@@ -4,7 +4,7 @@
   "description": "Useful functions for testing React Components with enzyme",
   "scripts": {
     "test": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test-lazy": "mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:lazy": "mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "test:w": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
