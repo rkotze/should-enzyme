@@ -19,6 +19,6 @@ export function boolAssertBuilder(
 
     const wrapperMethod = methodName ? methodName : name;
 
-    should(wrapper[wrapperMethod](arguments[0])).be.true(' ');
+    should(wrapper[wrapperMethod].apply(wrapper, arguments)).be.true(' ');
   });
 }
