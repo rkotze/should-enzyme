@@ -25,4 +25,13 @@ describe('Shallow enzyme wrapper', () => {
     shallowWrapper.wrapper.should.be.instanceOf(ShallowWrapper);
   });
 
+  it('should have prop that generates a cheerio DOM wrapper', () => {
+    shallowWrapper.should.have.property('element');
+    shallowWrapper.element.should.have.property('options', { 
+      withDomLvl1: true,
+      normalizeWhitespace: false,
+      xmlMode: false,
+      decodeEntities: true });
+  });
+
 });
