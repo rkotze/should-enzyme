@@ -50,6 +50,11 @@ describe('Should enzyme add prop', () => {
       (() => wrapper.should.have.prop('id', 'stuff'))
       .should.throwError(/expected 'div' prop 'id' to have value 'stuff', instead found 'content'/);
     });
+
+    it('should fail to see useful error message for incorrect prop', () => {
+      (() => wrapper.should.have.prop('pizza', 'stuff'))
+      .should.throwError(/expected 'div' prop 'pizza' to have value 'stuff', instead found 'undefined'/);
+    });
   });
 
   context('using ReactWrapper', () => {
