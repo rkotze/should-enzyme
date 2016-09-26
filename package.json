@@ -16,11 +16,22 @@
     "url": "https://github.com/rkotze/should-enzyme"
   },
   "keywords": [
+    "shallow rendering",
+    "shallow",
+    "react rendering",
+    "reactjs",
+    "flux",
+    "testing",
+    "test utils",
+    "assertion helpers",
+    "tdd",
+    "bdd",
     "react",
     "enzyme",
     "should",
     "assert",
-    "testing"
+    "test",
+    "mocha"
   ],
   "main": "lib/index.js",
   "license": {
@@ -28,6 +39,11 @@
     "url": "https://github.com/rkotze/should-enzyme/blob/master/LICENSE"
   },
   "author": "Richard Kotze <richkotze@outlook.com>",
+  "peerDependencies": {
+    "should": "8.x || 9.x || 10.x || 11.x",
+    "cheerio": "0.19.x || 0.20.x || 0.22.x",
+    "enzyme": "1.x || 2.x"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -36,6 +52,7 @@
     "babel-plugin-transform-es2015-modules-umd": "^6.8.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.11.1",
+    "cheerio": "^0.22.0",
     "enzyme": "^2.4.1",
     "eslint": "^3.4.0",
     "eslint-config-google": "^0.6.0",
