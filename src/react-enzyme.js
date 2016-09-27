@@ -17,4 +17,11 @@ export default class ReactEnzyme extends BaseEnzyme {
     return this.__wrapper;
   }
 
+  get element() {
+    if(!this.__element)
+      this.__element = this.enzyme.single((n) => findDOMNode(n));
+    
+    return this.__element;
+  }
+
 }

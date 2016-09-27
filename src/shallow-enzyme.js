@@ -14,8 +14,7 @@ export default class ShallowEnzyme extends BaseEnzyme {
   get element() {
     if(!this.__element)
       this.__element = $(this.enzyme.html());
-
-    console.log(this.__element);
+    
     return this.__element;
   }
 

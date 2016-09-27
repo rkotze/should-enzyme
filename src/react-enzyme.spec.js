@@ -25,4 +25,9 @@ describe('React enzyme wrapper', () => {
     reactWrapper.wrapper.should.be.instanceOf(ReactWrapper);
   });
 
+  it('should have prop that gets the parent node as ReactDOM wrapper', () => {
+    reactWrapper.should.have.property('element');
+    // reactWrapper.element.type.should.be.instanceOf(ReactWrapper);
+  });
+
 });
