@@ -21,7 +21,7 @@ describe('Boolean assertion builder', () => {
 
   before(() => {
     wrapperProps = { 
-      type: sinon.stub().returns('div'),
+      name: sinon.stub().returns('div'),
       awesome: sinon.stub().returns(true),
       classNames: sinon.stub().returns('css classes'),
       moreAwesome: sinon.stub().returns(true)
@@ -38,7 +38,7 @@ describe('Boolean assertion builder', () => {
     assertionAddSpy.reset();
     wrapperBuilderSpy.reset();
     wrapperProps.awesome.reset();
-    wrapperProps.type.reset();
+    wrapperProps.name.reset();
     wrapperProps.classNames.reset();
   });
 
@@ -75,9 +75,9 @@ describe('Boolean assertion builder', () => {
     assertMessageFnSpy.should.be.calledWith(['stuff'], sinon.match.object);
   });
 
-  it('on callback wrapper method type and classNames should be called', () => {
+  it('on callback wrapper method name and classNames should be called', () => {
     renderDom.should.be.awesome('stuff');
-    wrapperProps.type.should.be.calledOnce();
+    wrapperProps.name.should.be.calledOnce();
     wrapperProps.classNames.should.be.calledOnce();
   });
 

@@ -40,47 +40,50 @@ describe('Different enzyme render method', () => {
       wrapper = WrapperBuilder(renderMethod(<Fixture id="free" />));
     });
 
-    it(`${methodNames[i]} should return true when checking for "testCssClass"`, () => {
-      wrapper.should.have.property('hasClass');
-      wrapper.hasClass('testCssClass').should.be.true();
-    });
+    context(methodNames[i], () => {
 
-    it(`${methodNames[i]} should return false when checking for "cssClass"`, () => {
-      wrapper.should.have.property('hasClass');
-      wrapper.hasClass('cssClass').should.be.false();
-    });
+      it(`should return true when checking for "testCssClass"`, () => {
+        wrapper.should.have.property('hasClass');
+        wrapper.hasClass('testCssClass').should.be.true();
+      });
 
-    it(`${methodNames[i]} should return a string of classNames for the element`, () => {
-      wrapper.should.have.property('classNames');
-      wrapper.classNames().should.equal('testCssClass newClass');
-    });
+      it(`should return false when checking for "cssClass"`, () => {
+        wrapper.should.have.property('hasClass');
+        wrapper.hasClass('cssClass').should.be.false();
+      });
 
-    it(`${methodNames[i]} should have type div`, () => {
-      wrapper.should.have.property('type');
-      wrapper.type().should.equal('div');
-    });
+      it(`should return a string of classNames for the element`, () => {
+        wrapper.should.have.property('classNames');
+        wrapper.classNames().should.equal('testCssClass newClass');
+      });
 
-    it(`${methodNames[i]} should get prop "id" value of "free"`, () => {
-      wrapper.should.have.property('prop');
-      wrapper.prop('id').should.equal('free');
-    });
+      it(`should have name div or Fixture`, () => {
+        wrapper.should.have.property('name');
+        wrapper.name().should.be.oneOf('div', 'Fixture');
+      });
 
-    it(`${methodNames[i]} should check if prop "id" exists`, () => {
-      wrapper.should.have.property('hasProp');
-      wrapper.hasProp('id').should.be.true();
-    });
+      it(`should get prop "id" value of "free"`, () => {
+        wrapper.should.have.property('prop');
+        wrapper.prop('id').should.equal('free');
+      });
 
-    it(`${methodNames[i]} should be false "noData" does not exist`, () => {
-      wrapper.should.have.property('hasProp');
-      wrapper.hasProp('noData').should.be.false();
-    });
+      it(`should check if prop "id" exists`, () => {
+        wrapper.should.have.property('hasProp');
+        wrapper.hasProp('id').should.be.true();
+      });
 
-    it(`${methodNames[i]} should check if prop "id" value is "free"`, () => {
-      wrapper.hasProp('id', 'free').should.be.true();
-    });
+      it(`should be false "noData" does not exist`, () => {
+        wrapper.should.have.property('hasProp');
+        wrapper.hasProp('noData').should.be.false();
+      });
 
-    it(`${methodNames[i]} should be false if prop "id" value is "other"`, () => {
-      wrapper.hasProp('id', 'other').should.be.false();
+      it(`should check if prop "id" value is "free"`, () => {
+        wrapper.hasProp('id', 'free').should.be.true();
+      });
+
+      it(`should be false if prop "id" value is "other"`, () => {
+        wrapper.hasProp('id', 'other').should.be.false();
+      });
     });
   });
 });

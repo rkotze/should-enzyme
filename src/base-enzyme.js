@@ -12,7 +12,7 @@ export default class BaseEnzyme {
     return this.enzyme.prop(key);
   }
 
-  type() {
-    return this.wrapper.type();
+  name() {
+    return this.enzyme.name();
   }
 }
