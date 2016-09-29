@@ -24,4 +24,13 @@ export default class ReactEnzyme extends BaseEnzyme {
     return this.__element;
   }
 
+  classNames() {
+    return this.element.className;
+  }
+
+  hasClass(className) {
+    const classNameList = this.classNames().split(' ');
+    return classNameList.indexOf(className) > -1;
+  }
+
 }

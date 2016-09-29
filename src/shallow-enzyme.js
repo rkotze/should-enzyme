@@ -18,4 +18,12 @@ export default class ShallowEnzyme extends BaseEnzyme {
     return this.__element;
   }
 
+  classNames() {
+    return this.enzyme.prop('className');
+  }
+
+  hasClass(className) {
+    return this.enzyme.hasClass(className);
+  }
+
 }
