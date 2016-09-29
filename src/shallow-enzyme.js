@@ -7,10 +7,6 @@ export default class ShallowEnzyme extends BaseEnzyme {
     this.enzyme = enzymeWrapper;
   }
 
-  get wrapper () {
-    return this.enzyme;
-  }
-
   get element() {
     if(!this.__element)
       this.__element = $(this.enzyme.html());

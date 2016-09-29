@@ -5,16 +5,6 @@ export default class ReactEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
     super();
     this.enzyme = enzymeWrapper;
-    this.toReactWrapper = this.enzyme.wrap.bind(this.enzyme);
-  }
-
-  get wrapper () {
-    if(!this.__wrapper)
-      this.__wrapper = this.toReactWrapper(
-        this.enzyme.single((n) => findDOMNode(n))
-      );
-
-    return this.__wrapper;
   }
 
   get element() {

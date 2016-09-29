@@ -20,11 +20,6 @@ describe('Shallow enzyme wrapper', () => {
     shallowWrapper.enzyme.should.be.instanceOf(ShallowWrapper);
   });
 
-  it('should have prop that gets the parent node as shallow wrapper', () => {
-    shallowWrapper.should.have.property('wrapper');
-    shallowWrapper.wrapper.should.be.instanceOf(ShallowWrapper);
-  });
-
   it('should have prop that generates a cheerio DOM wrapper', () => {
     shallowWrapper.should.have.property('element');
     shallowWrapper.element.should.have.property('options', { 
