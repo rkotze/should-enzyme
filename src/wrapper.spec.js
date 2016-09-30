@@ -37,7 +37,7 @@ describe('Different enzyme render method', () => {
   [shallow, mount].forEach((renderMethod, i) => {
     let wrapper;
     before(() => {
-      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" />));
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
     });
 
     context(methodNames[i], () => {
@@ -84,6 +84,16 @@ describe('Different enzyme render method', () => {
       it(`should be false if prop "id" value is "other"`, () => {
         wrapper.hasProp('id', 'other').should.be.false();
       });
+
+      it(`should get prop "title" value of "amazing"`, () => {
+        wrapper.should.have.property('attr');
+        wrapper.attr('title').should.equal('amazing');
+      });
+
+      it(`should get "undefined" if the prop does not exist`, () => {
+        (wrapper.attr('bla') === undefined).should.be.true();
+      });
+
     });
   });
 });

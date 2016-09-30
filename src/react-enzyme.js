@@ -23,4 +23,8 @@ export default class ReactEnzyme extends BaseEnzyme {
     return classNameList.indexOf(className) > -1;
   }
 
+  attr(name) {
+    return this.element.getAttribute(name) || undefined;
+  }
+
 }
