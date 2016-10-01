@@ -4,13 +4,23 @@
 
 1. [Install](#install)
 1. [Assertions](#assertions)
+	1. [`attr(key, [value])`](#attrkey-value)
 	1. [`className(string)`](#classnamestring)
+	1. [`prop(key, [value])`](#propkey-value)
 
 ## Install
 
-`npm i should-enzyme`
+`npm i should-enzyme --save-dev`
 
 ## Assertions
+
+### `attr(key, [value])`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if element has attribute and optionally check value.
 
 ### `className(string)`
 
@@ -18,4 +28,12 @@
 | -------|-------|-------- |
 | no     | yes   | yes     |
 
-Check to see if wrapper has css class. 
+Check to see if wrapper has css class.
+
+### `prop(key, [value])`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper has prop and optionally check value.
