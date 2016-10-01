@@ -104,11 +104,11 @@ describe('Different enzyme render method', () => {
         wrapper.hasAttr('data-tr').should.be.false();
       });
 
-      it(`should check if prop "title" value is "amazing"`, () => {
+      it(`should check if attribute "title" value is "amazing"`, () => {
         wrapper.hasAttr('title', 'amazing').should.be.true();
       });
 
-      it(`should be false if prop "title" value is "other"`, () => {
+      it(`should be false if attribute "title" value is "other"`, () => {
         wrapper.hasAttr('title', 'other').should.be.false();
       });
 

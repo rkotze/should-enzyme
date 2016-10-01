@@ -1,18 +1,13 @@
+import assertKeyValue from './assert-key-value';
 
 export default class BaseEnzyme {
 
   hasAttr(key, attrValue) {
-    if(attrValue)
-      return this.attr(key) === attrValue;
-
-    return typeof this.attr(key) !== 'undefined';
+    return assertKeyValue(this.attr(key), attrValue);
   }
 
   hasProp(key, propValue) {
-    if(propValue)
-      return this.enzyme.prop(key) === propValue;
-
-    return typeof this.enzyme.prop(key) !== 'undefined';
+    return assertKeyValue(this.prop(key), propValue);
   }
 
   prop(key) {
