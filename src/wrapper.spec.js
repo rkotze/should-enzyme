@@ -94,6 +94,24 @@ describe('Different enzyme render method', () => {
         (wrapper.attr('bla') === undefined).should.be.true();
       });
 
+      it(`should check if attribute "title" exists`, () => {
+        wrapper.should.have.property('hasAttr');
+        wrapper.hasAttr('title').should.be.true();
+      });
+
+      it(`should be false "data-tr" does not exist`, () => {
+        wrapper.should.have.property('hasAttr');
+        wrapper.hasAttr('data-tr').should.be.false();
+      });
+
+      it(`should check if prop "title" value is "amazing"`, () => {
+        wrapper.hasAttr('title', 'amazing').should.be.true();
+      });
+
+      it(`should be false if prop "title" value is "other"`, () => {
+        wrapper.hasAttr('title', 'other').should.be.false();
+      });
+
     });
   });
 });
