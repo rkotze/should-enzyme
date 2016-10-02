@@ -54,7 +54,7 @@ describe('Should enzyme add attr feature', () => {
 
       it('should see useful error message for incorrect attribute', () => {
         (() => wrapper.should.have.attr('pizza', 'stuff'))
-        .should.throwError(/expected '(div|AttrFixture)' attribute 'pizza' to have value 'stuff', instead found 'undefined'/);
+        .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
       });
     });
   });
