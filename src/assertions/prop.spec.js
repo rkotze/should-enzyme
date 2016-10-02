@@ -54,7 +54,7 @@ describe('Should enzyme add prop', () => {
 
       it('should fail to see useful error message for incorrect prop', () => {
         (() => wrapper.should.have.prop('pizza', 'stuff'))
-        .should.throwError(/expected '(div|PropFixture)' prop 'pizza' to have value 'stuff', instead found 'undefined'/);
+        .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
       });
     });
   });
