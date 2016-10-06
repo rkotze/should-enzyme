@@ -112,6 +112,10 @@ describe('Different enzyme render method', () => {
         wrapper.hasAttr('title', 'other').should.be.false();
       });
 
+      it(`should get "Content here" text`, () => {
+        wrapper.text().should.equal('Content here');
+      });
+
     });
   });
 });
