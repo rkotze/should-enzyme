@@ -1,6 +1,6 @@
 # should-enzyme
 
-[![Build Status](https://travis-ci.org/rkotze/should-enzyme.svg?branch=master)](https://travis-ci.org/rkotze/joinable)
+[![Build Status](https://travis-ci.org/rkotze/should-enzyme.svg?branch=master)](https://travis-ci.org/rkotze/should-enzyme)
 
 [should.js](https://shouldjs.github.io/) assertions for [enzyme](https://github.com/airbnb/enzyme)
 
