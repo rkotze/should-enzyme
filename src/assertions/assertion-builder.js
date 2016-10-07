@@ -15,8 +15,7 @@ export function boolAssertBuilder(
     args = slice.call(arguments);
 
     this.params = {
-      obj: wrapper.name(), 
-      operator: assertMessageFn(args, wrapper)
+      message: assertMessageFn(args, wrapper)
     };
 
     const wrapperMethod = methodName ? methodName : name;

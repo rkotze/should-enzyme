@@ -35,11 +35,15 @@ describe('Should enzyme add checked feature', () => {
         notChecked.should.not.be.checked();
       });
 
-      it('should see useful error message for checkbox not checked', () => {
+      it('should see useful error message for checkbox expected to be checked', () => {
         (() => notChecked.should.be.checked())
         .should.throwError(/expected 'input' type 'checkbox' to be 'checked' but got 'false'/);
       });
 
+      it('should see useful error message for checkbox not expected to be checked.', () => {
+        (() => checked.should.not.be.checked())
+        .should.throwError(/expected 'input' type 'checkbox' to not be 'checked' but got 'true'/);
+      });
     });
   });
 });
