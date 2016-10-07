@@ -27,4 +27,8 @@ export default class ReactEnzyme extends BaseEnzyme {
     return this.element.getAttribute(name) || undefined;
   }
 
+  checked() {
+    return this.element.checked;
+  }
+
 }

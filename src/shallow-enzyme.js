@@ -26,4 +26,8 @@ export default class ShallowEnzyme extends BaseEnzyme {
     return this.element.attr(name);
   }
 
+  checked() {
+    return this.element.is(':checked');
+  }
+
 }
