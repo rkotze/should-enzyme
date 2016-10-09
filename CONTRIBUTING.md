@@ -11,7 +11,7 @@ Follow [4 rules of simple design](http://martinfowler.com/bliki/BeckDesignRules.
 
 Please follow [Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule).
 
-1. Create issue
+1. Create issue or address an existing
 1. Fork it!
 1. Create your feature branch (git checkout -b my-new-feature)
 1. Write tests and passes the linting set
@@ -19,3 +19,4 @@ Please follow [Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index
 1. Commit your changes (git commit -am 'Add some feature')
 1. Push to the branch (git push origin my-new-feature)
 1. Create new Pull Request
+1. Reference the issue you're solving
