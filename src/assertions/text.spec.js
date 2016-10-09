@@ -14,22 +14,22 @@ describe('Should enzyme add check text', () => {
   it('should have new method text', () => {
     shouldEnzyme.should.have.property('containsText');
   });
-  it('should have text TextFixture', () => {
-    [shallow, mount].forEach(method => {
+  [shallow, mount].forEach(method => {
+    it(`should have text TextFixture using ${method.name}`, () => {
       const wrapper = method(<TextFixture />);
       wrapper.should.containsText('Content here');
     });
   });
 
-  it('should NOT contain text "pizza" in TextFixture', () => {
-    [shallow, mount].forEach(method => {
+  [shallow, mount].forEach(method => {
+    it(`should NOT contain text "pizza" in TextFixture using ${method.name}`, () => {
       const wrapper = method(<TextFixture />);
       wrapper.should.not.containsText('pizza');
     });
   });
 
-  it('assert should fail to see useful error message', () => {
-    [shallow, mount].forEach(method => {
+  [shallow, mount].forEach(method => {
+    it(`assert should fail to see useful error message using ${method.name}`, () => {
       const wrapper = method(<TextFixture />);
       (() => wrapper.should.containsText('pizza'))
       .should.throwError(/expected '(div|TextFixture)' to have text 'pizza' but found 'Content here'/);
