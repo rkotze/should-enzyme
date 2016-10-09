@@ -2,7 +2,7 @@
 import should from 'should';
 
 const Assertion = should.Assertion;
-Assertion.add('text', function(string) {
+Assertion.add('containsText', function(string) {
   const text = this.obj.text();
   this.params = {
     obj: this.obj.name(),
