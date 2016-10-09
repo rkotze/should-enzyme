@@ -1,5 +1,4 @@
 import './class-name';
-import { shallow, mount } from 'enzyme';
 import { eachRenderMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
