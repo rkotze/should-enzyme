@@ -11,6 +11,12 @@ Follow [4 rules of simple design](http://martinfowler.com/bliki/BeckDesignRules.
 
 Please follow [Boy Scout Rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule).
 
+## Adding new assertion
+
+Please add documentation in readme explaining what it does and code example.
+
+## Basics
+
 1. Create issue or address an existing
 1. Fork it!
 1. Create your feature branch (git checkout -b my-new-feature)
