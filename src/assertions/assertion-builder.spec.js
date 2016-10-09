@@ -44,6 +44,7 @@ describe('Assertion builder', () => {
     wrapperBuilderSpy.reset();
     wrapperProps.muse.reset();
     wrapperProps.classNames.reset();
+    wrapperProps.name.reset();
     assertFnSpy.reset();
     assertMessageFnSpy.reset();
   });
@@ -80,6 +81,12 @@ describe('Assertion builder', () => {
     renderDom.should.be.muse('stuff');
     assertMessageFnSpy.should.be.calledOnce();
     assertMessageFnSpy.should.be.calledWith('stuff');
+  });
+
+  it('in assertMessageFn wrapper method "name" and "classNames" should be called', () => {
+    renderDom.should.be.muse('stuff');
+    wrapperProps.name.should.be.calledOnce();
+    wrapperProps.classNames.should.be.calledOnce();
   });
 
 });
