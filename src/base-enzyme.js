@@ -17,7 +17,9 @@ export default class BaseEnzyme {
   name() {
     return this.enzyme.name();
   }
-
+  containsText(string) {
+    return this.enzyme.text().includes(string);
+  }
   text() {
     return this.enzyme.text();
   }

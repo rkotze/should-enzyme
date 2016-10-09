@@ -6,7 +6,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 const TextFixture = () => (
-  <div className="special burger">Content here</div>
+  <div className="special burger">Content here. More content</div>
 );
 
 describe('Should enzyme add check text', () => {
@@ -15,7 +15,7 @@ describe('Should enzyme add check text', () => {
     shouldEnzyme.should.have.property('containsText');
   });
   [shallow, mount].forEach(method => {
-    it(`should have text TextFixture using ${method.name}`, () => {
+    it(`should contain text TextFixture using ${method.name}`, () => {
       const wrapper = method(<TextFixture />);
       wrapper.should.containsText('Content here');
     });
@@ -32,7 +32,7 @@ describe('Should enzyme add check text', () => {
     it(`assert should fail to see useful error message using ${method.name}`, () => {
       const wrapper = method(<TextFixture />);
       (() => wrapper.should.containsText('pizza'))
-      .should.throwError(/expected '(div|TextFixture)' to have text 'pizza' but found 'Content here'/);
+      .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
     });
   });
 });

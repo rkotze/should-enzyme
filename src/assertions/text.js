@@ -1,12 +1,6 @@
+import { boolAssertBuilder } from './assertion-builder';
 
-import should from 'should';
-
-const Assertion = should.Assertion;
-Assertion.add('containsText', function(string) {
-  const text = this.obj.text();
-  this.params = {
-    obj: this.obj.name(),
-    operator: `to have text '${string}' but found '${text}'`,
-  };
-  should(text.includes(string)).be.true(' ');
+boolAssertBuilder('containsText',
+  (args, wrapper) => {
+    return `expected '${wrapper.name()}' to contain text '${args[0]}' but found '${wrapper.text()}'`;
 });
