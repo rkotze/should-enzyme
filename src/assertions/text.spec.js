@@ -5,6 +5,7 @@ import './text';
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
+let wrapper;
 const TextFixture = () => (
   <div className="special burger">Content here. More content</div>
 );
@@ -15,24 +16,24 @@ describe('Should enzyme add check text', () => {
     shouldEnzyme.should.have.property('containsText');
   });
   [shallow, mount].forEach(method => {
-    it(`should contain text TextFixture using ${method.name}`, () => {
-      const wrapper = method(<TextFixture />);
-      wrapper.should.containsText('Content here');
-    });
-  });
+    context(method.name, () => {
+      before(() => {
+        wrapper = method(<TextFixture />);
 
-  [shallow, mount].forEach(method => {
-    it(`should NOT contain text "pizza" in TextFixture using ${method.name}`, () => {
-      const wrapper = method(<TextFixture />);
-      wrapper.should.not.containsText('pizza');
-    });
-  });
+      });
+      it(`should contain text TextFixture`, () => {
+        wrapper.should.containsText('Content here');
+      });
 
-  [shallow, mount].forEach(method => {
-    it(`assert should fail to see useful error message using ${method.name}`, () => {
-      const wrapper = method(<TextFixture />);
-      (() => wrapper.should.containsText('pizza'))
-      .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
+      it(`should NOT contain text "pizza" in TextFixture`, () => {
+        wrapper.should.not.containsText('pizza');
+      });
+
+      it(`assert should fail to see useful error message`, () => {
+        (() => wrapper.should.containsText('pizza'))
+        .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
+      });
+
     });
   });
 });
