@@ -1,5 +1,6 @@
 import './class-name';
 import { shallow, mount } from 'enzyme';
+import { eachRenderMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
 const ClassNameFixture = () => (
@@ -13,37 +14,26 @@ describe('Should enzyme add check hasClass', () => {
     shouldEnzyme.should.have.property('className');
   });
 
-  context('using ShallowWrapper', () => {
-    let wrapper;
+  eachRenderMethod((renderMethod, methodName) => {
+    context(methodName, () => {
+      let wrapper;
 
-    before(() => {
-      wrapper = shallow(<ClassNameFixture />);
-    });
+      before(() => {
+        wrapper = renderMethod(<ClassNameFixture />);
+      });
 
-    it('should contain class name "special" in ClassNameFixture', () => {
-      wrapper.should.have.className('special');
-    });
+      it('should contain class name "special" in ClassNameFixture', () => {
+        wrapper.should.have.className('special');
+      });
 
-    it('should NOT contain class name "pizza" in ClassNameFixture', () => {
-      wrapper.should.not.have.className('pizza');
-    });
+      it('should NOT contain class name "pizza" in ClassNameFixture', () => {
+        wrapper.should.not.have.className('pizza');
+      });
 
-    it('assert should fail to see useful error message', () => {
-      (() => wrapper.should.have.className('pizza'))
-      .should.throwError(/expected 'div' to have className 'pizza' but found 'special burger'/);
-    });
-  });
-
-  context('using ReactWrapper', () => {
-    let wrapper;
-
-    before(() => {
-      wrapper = mount(<ClassNameFixture />);
-    });
-
-    it('should contain class name "special" in ClassNameFixture wrapping div', () => {
-      wrapper.should.have.className('special');
+      it('assert should fail to see useful error message', () => {
+        (() => wrapper.should.have.className('pizza'))
+        .should.throwError(/expected '(div|ClassNameFixture)' to have className 'pizza' but found 'special burger'/);
+      });
     });
   });
-
 });
