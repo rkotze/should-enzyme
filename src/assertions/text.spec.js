@@ -14,31 +14,25 @@ describe('Should enzyme add check text', () => {
   it('should have new method text', () => {
     shouldEnzyme.should.have.property('text');
   });
-  context('using ShallowWrapper', () => {
-    let wrapper;
-    before(() => {
-      wrapper = shallow(<TextFixture />);
+  it('should have text TextFixture', () => {
+    [shallow, mount].forEach(method => {
+      const wrapper = method(<TextFixture />);
+      wrapper.should.have.text('Content here');
     });
+  });
 
-    it('should have text TextFixture', () => {
-      [shallow, mount].forEach(method => {
-        wrapper = method(<TextFixture />);
-        wrapper.should.have.text('Content here');
-      });
+  it('should NOT contain text "pizza" in TextFixture', () => {
+    [shallow, mount].forEach(method => {
+      const wrapper = method(<TextFixture />);
+      wrapper.should.not.have.text('pizza');
     });
+  });
 
-    it('should NOT contain text "pizza" in TextFixture', () => {
-      [shallow, mount].forEach(method => {
-        wrapper.should.not.have.text('pizza');
-      });
-    });
-
-    it('assert should fail to see useful error message', () => {
-      [shallow, mount].forEach(method => {
-        wrapper = method(<TextFixture />);
-        (() => wrapper.should.have.text('pizza'))
-        .should.throwError(/expected '(div|TextFixture)' to have text 'pizza' but found 'Content here'/);
-      });
+  it('assert should fail to see useful error message', () => {
+    [shallow, mount].forEach(method => {
+      const wrapper = method(<TextFixture />);
+      (() => wrapper.should.have.text('pizza'))
+      .should.throwError(/expected '(div|TextFixture)' to have text 'pizza' but found 'Content here'/);
     });
   });
 });
