@@ -2,6 +2,7 @@ import WrapperBuilder from './wrapper';
 import ShallowEnzyme from './shallow-enzyme';
 import ReactEnzyme from './react-enzyme';
 import { shallow, mount } from 'enzyme';
+import { eachRenderMethod } from '../test-setup/each-render-method';
 import React from 'react';
 
 const Fixture = (props) => (
@@ -33,14 +34,13 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 });
 
 describe('Different enzyme render method', () => {
-  const methodNames = ['shallow', 'mount'];
-  [shallow, mount].forEach((renderMethod, i) => {
+  eachRenderMethod((renderMethod, methodName) => {
     let wrapper;
     before(() => {
       wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
     });
 
-    context(methodNames[i], () => {
+    context(methodName, () => {
 
       it(`should return true when checking for "testCssClass"`, () => {
         wrapper.should.have.property('hasClass');
