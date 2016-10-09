@@ -16,7 +16,7 @@ describe('Boolean assertion builder', () => {
   wrapperProps,
   assertMessageFnSpy,
   assertMessageFn = function(expected, wrapper) {
-    return `to have ${expected} but got ${wrapper.classNames()}`;
+    return `expected '${wrapper.name()}' to have ${expected} but got ${wrapper.classNames()}`;
   };
 
   before(() => {

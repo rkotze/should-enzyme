@@ -2,7 +2,7 @@
 /* eslint-disable padded-blocks, no-unused-expressions, max-len, no-console */
 
 import './text';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 const TextFixture = () => (
@@ -21,20 +21,20 @@ describe('Should enzyme add check text', () => {
     });
 
     it('should have text TextFixture', () => {
-      [shallow].forEach(method => {
+      [shallow, mount].forEach(method => {
         wrapper = method(<TextFixture />);
         wrapper.should.have.text('Content here');
       });
     });
 
     it('should NOT contain text "pizza" in TextFixture', () => {
-      [shallow].forEach(method => {
+      [shallow, mount].forEach(method => {
         wrapper.should.not.have.text('pizza');
       });
     });
 
     it('assert should fail to see useful error message', () => {
-      [shallow].forEach(method => {
+      [shallow, mount].forEach(method => {
         wrapper = method(<TextFixture />);
         (() => wrapper.should.have.text('pizza'))
         .should.throwError(/expected '(div|TextFixture)' to have text 'pizza' but found 'Content here'/);

@@ -17,5 +17,9 @@ export default class BaseEnzyme {
   name() {
     return this.enzyme.name();
   }
+
+  text() {
+    return this.enzyme.text();
+  }
   
 }
