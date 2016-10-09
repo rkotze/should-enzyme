@@ -10,6 +10,7 @@
 	1. [`checked()`](#checked)
 	1. [`className(string)`](#classnamestring)
 	1. [`prop(key, [value])`](#propkey-value)
+	1. [`containsText(string)`](#containstextstring)
 
 ## Install
 
@@ -48,3 +49,11 @@ Check to see if wrapper has css class.
 | no     | yes   | yes     |
 
 Check to see if wrapper has prop and optionally check value.
+
+### `containsText(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper contains text.
