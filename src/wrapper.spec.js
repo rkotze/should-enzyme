@@ -67,24 +67,6 @@ describe('Different enzyme render method', () => {
         wrapper.prop('id').should.equal('free');
       });
 
-      it(`should check if prop "id" exists`, () => {
-        wrapper.should.have.property('hasProp');
-        wrapper.hasProp('id').should.be.true();
-      });
-
-      it(`should be false "noData" does not exist`, () => {
-        wrapper.should.have.property('hasProp');
-        wrapper.hasProp('noData').should.be.false();
-      });
-
-      it(`should check if prop "id" value is "free"`, () => {
-        wrapper.hasProp('id', 'free').should.be.true();
-      });
-
-      it(`should be false if prop "id" value is "other"`, () => {
-        wrapper.hasProp('id', 'other').should.be.false();
-      });
-
       it(`should get prop "title" value of "amazing"`, () => {
         wrapper.should.have.property('attr');
         wrapper.attr('title').should.equal('amazing');
