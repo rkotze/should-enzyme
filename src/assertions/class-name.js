@@ -1,9 +1,11 @@
-import { boolAssertBuilder } from './assertion-builder';
+import { assertionBuilder } from './assertion-builder';
 
-boolAssertBuilder(
+assertionBuilder(
   'className', 
-  (args, wrapper) => {
-    return `expected '${wrapper.name()}' to have className '${args[0]}' but found '${wrapper.classNames()}'`;
-  }, 
-  'hasClass'
+  function (expected) {
+    return this.hasClass(expected);
+  },
+  function (expected) {
+    return `expected '${this.name()}' to have className '${expected}' but found '${this.classNames()}'`;
+  }
 );

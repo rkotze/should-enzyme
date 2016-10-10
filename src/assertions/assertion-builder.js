@@ -25,14 +25,19 @@ export function boolAssertBuilder(
 }
 
 /**
- * assertionBuilder .
+ * assertionBuilder: extend shouldjs api and access Enzyme wrappers to assert on.
  *
  * @param name  name of assertion
  * @param assertFn  return a boolen for assert - args from should passed through
  * @param failMessageFn - output fail message based on args.
  */
 
-export function assertionBuilder(name, assertFn, failMessageFn, wrapperBuilder = WrapperBuilder) {
+export function assertionBuilder(
+  name, 
+  assertFn, 
+  failMessageFn, 
+  wrapperBuilder = WrapperBuilder) {
+
   Assertion.add(name, function() {
     const wrapper = wrapperBuilder(this.obj),
     args = slice.call(arguments);
