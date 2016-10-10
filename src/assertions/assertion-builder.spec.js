@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import 'should-sinon';
 import { shallow } from 'enzyme';
 import React from 'react';
-import { boolAssertBuilder, assertionBuilder } from './assertion-builder';
+import { assertionBuilder } from './assertion-builder';
 
 const Fixture = () => (
   <div>Content here</div>
