@@ -1,13 +1,15 @@
-import { boolAssertBuilder } from './assertion-builder';
+import { assertionBuilder } from './assertion-builder';
 
-boolAssertBuilder(
-  'checked',
-  (_, wrapper) => {
-    var checked = wrapper.checked();
+assertionBuilder(
+  'checked', 
+  function () {
+    return this.checked();
+  },
+  function (expected) {
+    const checked = this.checked();
     if(checked)
-      return `expected '${wrapper.name()}' type 'checkbox' to not be 'checked' but got '${wrapper.checked()}'`;
+      return `expected '${this.name()}' type 'checkbox' to not be 'checked' but got '${checked}'`;
       
-    return `expected '${wrapper.name()}' type 'checkbox' to be 'checked' but got '${wrapper.checked()}'`;
-
+    return `expected '${this.name()}' type 'checkbox' to be 'checked' but got '${checked}'`;
   }
 );

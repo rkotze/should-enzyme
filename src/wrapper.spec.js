@@ -2,6 +2,7 @@ import WrapperBuilder from './wrapper';
 import ShallowEnzyme from './shallow-enzyme';
 import ReactEnzyme from './react-enzyme';
 import { shallow, mount } from 'enzyme';
+import { eachRenderMethod } from '../test-setup/each-render-method';
 import React from 'react';
 
 const Fixture = (props) => (
@@ -33,14 +34,13 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 });
 
 describe('Different enzyme render method', () => {
-  const methodNames = ['shallow', 'mount'];
-  [shallow, mount].forEach((renderMethod, i) => {
+  eachRenderMethod((renderMethod, methodName) => {
     let wrapper;
     before(() => {
       wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
     });
 
-    context(methodNames[i], () => {
+    context(methodName, () => {
 
       it(`should return true when checking for "testCssClass"`, () => {
         wrapper.should.have.property('hasClass');
@@ -67,24 +67,6 @@ describe('Different enzyme render method', () => {
         wrapper.prop('id').should.equal('free');
       });
 
-      it(`should check if prop "id" exists`, () => {
-        wrapper.should.have.property('hasProp');
-        wrapper.hasProp('id').should.be.true();
-      });
-
-      it(`should be false "noData" does not exist`, () => {
-        wrapper.should.have.property('hasProp');
-        wrapper.hasProp('noData').should.be.false();
-      });
-
-      it(`should check if prop "id" value is "free"`, () => {
-        wrapper.hasProp('id', 'free').should.be.true();
-      });
-
-      it(`should be false if prop "id" value is "other"`, () => {
-        wrapper.hasProp('id', 'other').should.be.false();
-      });
-
       it(`should get prop "title" value of "amazing"`, () => {
         wrapper.should.have.property('attr');
         wrapper.attr('title').should.equal('amazing');
@@ -92,24 +74,6 @@ describe('Different enzyme render method', () => {
 
       it(`should get "undefined" if the prop does not exist`, () => {
         (wrapper.attr('bla') === undefined).should.be.true();
-      });
-
-      it(`should check if attribute "title" exists`, () => {
-        wrapper.should.have.property('hasAttr');
-        wrapper.hasAttr('title').should.be.true();
-      });
-
-      it(`should be false "data-tr" does not exist`, () => {
-        wrapper.should.have.property('hasAttr');
-        wrapper.hasAttr('data-tr').should.be.false();
-      });
-
-      it(`should check if attribute "title" value is "amazing"`, () => {
-        wrapper.hasAttr('title', 'amazing').should.be.true();
-      });
-
-      it(`should be false if attribute "title" value is "other"`, () => {
-        wrapper.hasAttr('title', 'other').should.be.false();
       });
 
       it(`should get "Content here" text`, () => {

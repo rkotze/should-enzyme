@@ -1,12 +1,15 @@
-import { boolAssertBuilder } from './assertion-builder';
+import { assertionBuilder } from './assertion-builder';
+import assertKeyValue from '../assert-key-value';
 
-boolAssertBuilder(
+assertionBuilder(
   'prop', 
-  (args, wrapper) => {
-    if(args.length === 2 && typeof wrapper.prop(args[0]) !== 'undefined')
-      return `expected '${wrapper.name()}' prop '${args[0]}' to have value '${args[1]}', instead found '${wrapper.prop(args[0])}'`;
+  function (expectedKey, expectedValue) {
+    return assertKeyValue(this.prop(expectedKey), expectedValue);
+  },
+  function (expectedKey, expectedValue) {
+    if(arguments.length === 2 && typeof this.prop(expectedKey) !== 'undefined')
+      return `expected '${this.name()}' prop '${expectedKey}' to have value '${expectedValue}', instead found '${this.prop(expectedKey)}'`;
 
-    return `expected '${wrapper.name()}' to have prop '${args[0]}'`;
-  }, 
-  'hasProp'
+    return `expected '${this.name()}' to have prop '${expectedKey}'`;
+  }
 );

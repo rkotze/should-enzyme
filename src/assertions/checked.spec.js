@@ -1,5 +1,5 @@
 import './checked';
-import { shallow, mount } from 'enzyme';
+import { eachRenderMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
 const CheckedFixture = () => (
@@ -17,10 +17,8 @@ describe('Should enzyme add checked feature', () => {
     shouldEnzyme.should.have.property('checked');
   });
 
-  const renderName = ['shallow', 'mount'];
-  [shallow, mount].forEach((renderMethod, i) => {
-
-    context(renderName[i], () => {
+  eachRenderMethod((renderMethod, methodName) => {
+    context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<CheckedFixture />);
         checked = wrapper.find('#checked');
@@ -31,7 +29,7 @@ describe('Should enzyme add checked feature', () => {
         checked.should.checked();
       });
 
-      it('should NOT have attribute "pizza"', () => {
+      it('should NOT be checked', () => {
         notChecked.should.not.be.checked();
       });
 

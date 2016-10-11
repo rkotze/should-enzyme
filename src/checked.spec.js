@@ -1,6 +1,6 @@
 import WrapperBuilder from './wrapper';
-import { shallow, mount } from 'enzyme';
 import React from 'react';
+import { eachRenderMethod } from '../test-setup/each-render-method';
 
 const CheckedFixture = () => (
   <input type="checkbox" defaultChecked value="coffee" />
@@ -11,23 +11,22 @@ const NotCheckedFixture = () => (
 );
 
 describe('Checkbox', () => {
-  const methodNames = ['shallow', 'mount'];
-  [shallow, mount].forEach((renderMethod, i) => {
+  eachRenderMethod((renderMethod, methodName) => {
     let checkedInput, notCheckedInput;
     before(() => {
       checkedInput = WrapperBuilder(renderMethod(<CheckedFixture />));
       notCheckedInput = WrapperBuilder(renderMethod(<NotCheckedFixture />));
     });
 
-    context(methodNames[i], () => {
-      it(`should be checked`, () => {
+    context(methodName, () => {
+      it('should be checked', () => {
         checkedInput.checked().should.be.true();
       });
 
-      it(`should NOT be checked`, () => {
+      it('should NOT be checked', () => {
         notCheckedInput.checked().should.be.false();
       });
     });
-
   });
 });
+

@@ -1,25 +1,31 @@
 import WrapperBuilder from '../wrapper';
 import should from 'should';
 
-const Assertion = should.Assertion;
-const slice = Array.prototype.slice;
+const Assertion = should.Assertion,
+slice = Array.prototype.slice;
 
-export function boolAssertBuilder(
+/**
+ * assertionBuilder: extend shouldjs api and access ShouldEnzyme wrapper to assert with.
+ *
+ * @param name            name of assertion
+ * @param assertFn        callback return a boolean for assert, args passed through, this is BaseEnzyme
+ * @param failMessageFn   callback return fail message, args passed through, this is BaseEnzyme.
+ */
+
+export function assertionBuilder(
   name, 
-  assertMessageFn, 
-  methodName, 
+  assertFn, 
+  failMessageFn, 
   wrapperBuilder = WrapperBuilder) {
-  
+
   Assertion.add(name, function() {
     const wrapper = wrapperBuilder(this.obj),
     args = slice.call(arguments);
 
     this.params = {
-      message: assertMessageFn(args, wrapper)
+      message: failMessageFn.apply(wrapper, args)
     };
 
-    const wrapperMethod = methodName ? methodName : name;
-
-    should(wrapper[wrapperMethod].apply(wrapper, args)).be.true(' ');
+    should(assertFn.apply(wrapper, args)).be.true(' ');
   });
 }
