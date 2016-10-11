@@ -9,8 +9,8 @@
 	1. [`attr(key, [value])`](#attrkey-value)
 	1. [`checked()`](#checked)
 	1. [`className(string)`](#classnamestring)
-	1. [`prop(key, [value])`](#propkey-value)
 	1. [`containsText(string)`](#containstextstring)
+	1. [`prop(key, [value])`](#propkey-value)
 
 ## Install
 
@@ -42,6 +42,14 @@ Check to see if input type checkbox is checked.
 
 Check to see if wrapper has css class.
 
+### `containsText(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper contains text.
+
 ### `prop(key, [value])`
 
 | render | mount | shallow |
@@ -50,10 +58,3 @@ Check to see if wrapper has css class.
 
 Check to see if wrapper has prop and optionally check value.
 
-### `containsText(string)`
-
-| render | mount | shallow |
-| -------|-------|-------- |
-| no     | yes   | yes     |
-
-Check to see if wrapper contains text.
