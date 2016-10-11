@@ -1,6 +1,11 @@
-import { boolAssertBuilder } from './assertion-builder';
+import { assertionBuilder } from './assertion-builder';
 
-boolAssertBuilder('containsText',
-  (args, wrapper) => {
-    return `expected '${wrapper.name()}' to contain text '${args[0]}' but found '${wrapper.text()}'`;
-});
+assertionBuilder(
+  'containsText',
+  function(expectedString) {
+    return this.text().includes(expectedString);
+  },
+  function(expected) {
+    return `expected '${this.name()}' to contain text '${expected}' but found '${this.text()}'`;
+  }
+);
