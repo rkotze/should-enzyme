@@ -1,6 +1,6 @@
 {
   "name": "should-enzyme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Useful functions for testing React components with Enzyme and Shouldjs",
   "scripts": {
     "test": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
