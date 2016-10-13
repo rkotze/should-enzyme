@@ -1,8 +1,13 @@
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, render} from 'enzyme';
 
-export function eachRenderMethod(fn) {
-  const methodNames = ['shallow', 'mount'];
-  [shallow, mount].forEach((renderMethod, i) => {
-    fn(renderMethod, methodNames[i]);
+export function eachEnzymeMethod(methodNames, fn) {
+  const methods = {
+    'shallow': shallow,
+    'mount': mount,
+    'render': render
+  };
+
+  methodNames.forEach((methodName, i) => {
+    fn(methods[methodName], methodName);
   });
 }

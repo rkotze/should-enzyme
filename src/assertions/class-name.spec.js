@@ -1,5 +1,5 @@
 import './class-name';
-import { eachRenderMethod } from '../../test-setup/each-render-method';
+import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
 const ClassNameFixture = () => (
@@ -13,7 +13,7 @@ describe('Should enzyme add check hasClass', () => {
     shouldEnzyme.should.have.property('className');
   });
 
-  eachRenderMethod((renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
       let wrapper;
 

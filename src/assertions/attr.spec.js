@@ -1,5 +1,5 @@
 import './attr';
-import { eachRenderMethod } from '../../test-setup/each-render-method';
+import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React, { PropTypes } from 'react';
 
 const AttrFixture = ({ children, title }) => (
@@ -19,7 +19,7 @@ describe('Should enzyme add attr feature', () => {
     shouldEnzyme.should.have.property('attr');
   });
 
-  eachRenderMethod((renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<AttrFixture title="enzyme" />);

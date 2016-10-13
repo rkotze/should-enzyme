@@ -1,5 +1,5 @@
 import './prop';
-import { eachRenderMethod } from '../../test-setup/each-render-method';
+import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React, { PropTypes } from 'react';
 
 const PropFixture = ({ children, id }) => (
@@ -19,7 +19,7 @@ describe('Should enzyme add prop', () => {
     shouldEnzyme.should.have.property('prop');
   });
 
-  eachRenderMethod((renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<PropFixture id="content" />);
