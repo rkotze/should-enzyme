@@ -7,15 +7,15 @@ export default class RenderEnzyme extends BaseEnzyme {
   }
 
   get element (){
-  	if(!this.__element) {
-  		if(this.enzyme.first()['0'].type === 'root') {
-  			this.__element = this.enzyme.children().first();
-  		} else {
-  			this.__element = this.enzyme.first();
-  		}
-  	}
+    if(!this.__element) {
+      if(this.enzyme.first()['0'].type === 'root') {
+        this.__element = this.enzyme.children().first();
+      } else {
+        this.__element = this.enzyme.first();
+      }
+    }
 
-  	return this.__element;
+    return this.__element;
   }
   
 }
