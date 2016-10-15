@@ -2,7 +2,7 @@
 /* eslint-disable padded-blocks, no-unused-expressions, max-len, no-console */
 
 import './text';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import React from 'react';
 
 let wrapper;
@@ -15,7 +15,7 @@ describe('Should enzyme add check text', () => {
   it('should have new method text', () => {
     shouldEnzyme.should.have.property('containsText');
   });
-  [shallow, mount].forEach(method => {
+  [shallow, mount, render].forEach(method => {
     context(method.name, () => {
       before(() => {
         wrapper = method(<TextFixture />);

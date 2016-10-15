@@ -19,7 +19,7 @@ describe('Should enzyme add attr feature', () => {
     shouldEnzyme.should.have.property('attr');
   });
 
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<AttrFixture title="enzyme" />);

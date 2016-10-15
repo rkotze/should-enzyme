@@ -11,7 +11,7 @@ const NotCheckedFixture = () => (
 );
 
 describe('Checkbox', () => {
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     let checkedInput, notCheckedInput;
     before(() => {
       checkedInput = WrapperBuilder(renderMethod(<CheckedFixture />));
@@ -29,4 +29,3 @@ describe('Checkbox', () => {
     });
   });
 });
-
