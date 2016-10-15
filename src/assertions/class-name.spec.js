@@ -13,7 +13,7 @@ describe('Should enzyme add check hasClass', () => {
     shouldEnzyme.should.have.property('className');
   });
 
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
       let wrapper;
 

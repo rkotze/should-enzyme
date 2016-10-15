@@ -19,7 +19,7 @@ describe('Should enzyme add prop', () => {
     shouldEnzyme.should.have.property('prop');
   });
 
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<PropFixture id="content" />);
