@@ -21,7 +21,11 @@ export default class StaticEnzyme extends BaseEnzyme {
 
   name() {
     const node = this.element.get(0);
-    return node ? node.name : false;
+
+    if(node)
+      return node.name;
+
+    return null;
   }
 
   prop() {
@@ -29,7 +33,7 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   classNames() {
-    return this.element.prop('class');
+    return this.attr('class');
   }
 
   hasClass(className) {

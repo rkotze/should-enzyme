@@ -54,6 +54,6 @@ Check to see if wrapper contains text.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| yes     | yes   | yes     |
+| no     | yes   | yes     |
 
 Check to see if wrapper has prop and optionally check value.
