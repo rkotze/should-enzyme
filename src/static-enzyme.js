@@ -1,5 +1,5 @@
 import BaseEnzyme from './base-enzyme';
-import $ from 'cheerio';
+// import $ from 'cheerio';
 
 export default class StaticEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
@@ -8,8 +8,14 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   get element() {
-    if(!this.__element)
-      this.__element = $($.html(this.enzyme));
+    if(!this.__element) {
+      if(this.enzyme.first()['0'].type === 'root') {
+        this.__element = this.enzyme.children().first();
+      } else {
+        this.__element = this.enzyme.first();
+      }
+    }
+
     return this.__element;
   }
 
