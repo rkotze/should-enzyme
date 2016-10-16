@@ -22,7 +22,7 @@
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| no     | yes   | yes     |
+| yes     | yes   | yes     |
 
 Check to see if element has attribute and optionally check value.
 
@@ -30,7 +30,7 @@ Check to see if element has attribute and optionally check value.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| no     | yes   | yes     |
+| yes     | yes   | yes     |
 
 Check to see if input type checkbox is checked.
 
@@ -38,7 +38,7 @@ Check to see if input type checkbox is checked.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| no     | yes   | yes     |
+| yes     | yes   | yes     |
 
 Check to see if wrapper has css class.
 
@@ -46,7 +46,7 @@ Check to see if wrapper has css class.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| no     | yes   | yes     |
+| yes     | yes   | yes     |
 
 Check to see if wrapper contains text.
 
@@ -57,4 +57,3 @@ Check to see if wrapper contains text.
 | no     | yes   | yes     |
 
 Check to see if wrapper has prop and optionally check value.
-

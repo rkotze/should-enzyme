@@ -57,4 +57,17 @@ describe('Should enzyme add prop', () => {
       });
     });
   });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    context(methodName, () => {
+      before(() => {
+        wrapper = renderMethod(<PropFixture id="content" />);
+      });
+
+      it('should throw error when using prop on enzyme render method', () => {
+        (() => wrapper.should.have.prop('id'))
+        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
+      });
+    });
+  });
 });

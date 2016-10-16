@@ -17,7 +17,7 @@ describe('Should enzyme add checked feature', () => {
     shouldEnzyme.should.have.property('checked');
   });
 
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<CheckedFixture />);

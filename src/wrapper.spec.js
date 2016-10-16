@@ -1,7 +1,8 @@
 import WrapperBuilder from './wrapper';
 import ShallowEnzyme from './shallow-enzyme';
 import ReactEnzyme from './react-enzyme';
-import { shallow, mount } from 'enzyme';
+import StaticEnzyme from './static-enzyme';
+import { shallow, mount, render } from 'enzyme';
 import { eachEnzymeMethod } from '../test-setup/each-render-method';
 import React from 'react';
 
@@ -13,16 +14,22 @@ const Fixture = (props) => (
 
 describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 
-  it('should return a ShallowEnzyme', () => {
+  it('should return an instance of ShallowEnzyme', () => {
     const wrapper = shallow(<Fixture />);
 
     WrapperBuilder(wrapper).should.be.instanceOf(ShallowEnzyme);
   });
 
-  it('should return a ReactEnzyme', () => {
+  it('should return an instance of ReactEnzyme', () => {
     const wrapper = mount(<Fixture />);
 
     WrapperBuilder(wrapper).should.be.instanceOf(ReactEnzyme);
+  });
+
+  it('should return an instance of StaticEnzyme', () => {
+    const wrapper = render(<Fixture />);
+
+    WrapperBuilder(wrapper).should.be.instanceOf(StaticEnzyme);
   });
 
   it('anything else should throw an error', () => {
@@ -34,7 +41,7 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 });
 
 describe('Different enzyme render method', () => {
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     let wrapper;
     before(() => {
       wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
@@ -62,11 +69,6 @@ describe('Different enzyme render method', () => {
         wrapper.name().should.be.oneOf('div', 'Fixture');
       });
 
-      it(`should get prop "id" value of "free"`, () => {
-        wrapper.should.have.property('prop');
-        wrapper.prop('id').should.equal('free');
-      });
-
       it(`should get prop "title" value of "amazing"`, () => {
         wrapper.should.have.property('attr');
         wrapper.attr('title').should.equal('amazing');
@@ -80,6 +82,37 @@ describe('Different enzyme render method', () => {
         wrapper.text().should.equal('Content here');
       });
 
+    });
+  });
+
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+    let wrapper;
+    before(() => {
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
+    });
+
+    context(methodName, () => {
+
+      it(`should get prop "id" value of "free"`, () => {
+        wrapper.should.have.property('prop');
+        wrapper.prop('id').should.equal('free');
+      });
+    });
+  });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    let wrapper;
+    before(() => {
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
+    });
+
+    context(methodName, () => {
+
+      it(`should throw error using prop method and Enzyme render`, () => {
+        wrapper.should.have.property('prop');
+        (() => wrapper.prop('id'))
+        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
+      });
     });
   });
 });
