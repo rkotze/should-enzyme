@@ -19,7 +19,7 @@ describe('Should enzyme add prop', () => {
     shouldEnzyme.should.have.property('prop');
   });
 
-  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<PropFixture id="content" />);
@@ -54,6 +54,19 @@ describe('Should enzyme add prop', () => {
       it('should fail to see useful error message for incorrect prop', () => {
         (() => wrapper.should.have.prop('pizza', 'stuff'))
         .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
+      });
+    });
+  });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    context(methodName, () => {
+      before(() => {
+        wrapper = renderMethod(<PropFixture id="content" />);
+      });
+
+      it('should throw error when using prop on enzyme render method', () => {
+        (() => wrapper.should.have.prop('id'))
+        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
       });
     });
   });

@@ -41,7 +41,7 @@ describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 });
 
 describe('Different enzyme render method', () => {
-  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     let wrapper;
     before(() => {
       wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
@@ -69,11 +69,6 @@ describe('Different enzyme render method', () => {
         wrapper.name().should.be.oneOf('div', 'Fixture');
       });
 
-      it(`should get prop "id" value of "free"`, () => {
-        wrapper.should.have.property('prop');
-        wrapper.prop('id').should.equal('free');
-      });
-
       it(`should get prop "title" value of "amazing"`, () => {
         wrapper.should.have.property('attr');
         wrapper.attr('title').should.equal('amazing');
@@ -87,6 +82,37 @@ describe('Different enzyme render method', () => {
         wrapper.text().should.equal('Content here');
       });
 
+    });
+  });
+
+  eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
+    let wrapper;
+    before(() => {
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
+    });
+
+    context(methodName, () => {
+
+      it(`should get prop "id" value of "free"`, () => {
+        wrapper.should.have.property('prop');
+        wrapper.prop('id').should.equal('free');
+      });
+    });
+  });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    let wrapper;
+    before(() => {
+      wrapper = WrapperBuilder(renderMethod(<Fixture id="free" title="amazing" />));
+    });
+
+    context(methodName, () => {
+
+      it(`should throw error using prop method and Enzyme render`, () => {
+        wrapper.should.have.property('prop');
+        (() => wrapper.prop('id'))
+        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
+      });
     });
   });
 });
