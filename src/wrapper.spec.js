@@ -1,7 +1,8 @@
 import WrapperBuilder from './wrapper';
 import ShallowEnzyme from './shallow-enzyme';
 import ReactEnzyme from './react-enzyme';
-import { shallow, mount } from 'enzyme';
+import StaticEnzyme from './static-enzyme';
+import { shallow, mount, render } from 'enzyme';
 import { eachEnzymeMethod } from '../test-setup/each-render-method';
 import React from 'react';
 
@@ -13,16 +14,22 @@ const Fixture = (props) => (
 
 describe('Need a custom test wrapper based on Enzyme wrapper type', () => {
 
-  it('should return a ShallowEnzyme', () => {
+  it('should return an instance of ShallowEnzyme', () => {
     const wrapper = shallow(<Fixture />);
 
     WrapperBuilder(wrapper).should.be.instanceOf(ShallowEnzyme);
   });
 
-  it('should return a ReactEnzyme', () => {
+  it('should return an instance of ReactEnzyme', () => {
     const wrapper = mount(<Fixture />);
 
     WrapperBuilder(wrapper).should.be.instanceOf(ReactEnzyme);
+  });
+
+  it('should return an instance of StaticEnzyme', () => {
+    const wrapper = render(<Fixture />);
+
+    WrapperBuilder(wrapper).should.be.instanceOf(StaticEnzyme);
   });
 
   it('anything else should throw an error', () => {
