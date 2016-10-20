@@ -1,6 +1,6 @@
-import WrapperBuilder from './wrapper';
+import WrapperBuilder from './index';
 import React from 'react';
-import { eachEnzymeMethod } from '../test-setup/each-render-method';
+import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 
 const CheckedFixture = () => (
   <input type="checkbox" defaultChecked value="coffee" />

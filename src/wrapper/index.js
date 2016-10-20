@@ -1,7 +1,7 @@
 import { ShallowWrapper, ReactWrapper } from 'enzyme';
-import ShallowEnzyme from './shallow-enzyme';
-import ReactEnzyme from './react-enzyme';
-import StaticEnzyme from './static-enzyme';
+import ShallowEnzyme from '../shallow-enzyme';
+import ReactEnzyme from '../react-enzyme';
+import StaticEnzyme from '../static-enzyme';
 
 function WrapperBuilder(wrapper) {
   if(wrapper instanceof ShallowWrapper)

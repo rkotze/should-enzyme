@@ -1,9 +1,9 @@
-import WrapperBuilder from './wrapper';
-import ShallowEnzyme from './shallow-enzyme';
-import ReactEnzyme from './react-enzyme';
-import StaticEnzyme from './static-enzyme';
+import WrapperBuilder from './index';
+import ShallowEnzyme from '../shallow-enzyme';
+import ReactEnzyme from '../react-enzyme';
+import StaticEnzyme from '../static-enzyme';
 import { shallow, mount, render } from 'enzyme';
-import { eachEnzymeMethod } from '../test-setup/each-render-method';
+import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
 const Fixture = (props) => (
