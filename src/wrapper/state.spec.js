@@ -30,7 +30,22 @@ describe('Get state from component', () => {
       it('should get the state of "bestFruit"', () => {
         stateWrapper.state('bestFruit').should.equal('mango');
       });
-
     });
   });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    let stateWrapper;
+    before(() => {
+      stateWrapper = WrapperBuilder(renderMethod(<StateFixture />));
+    });
+
+    context(methodName, () => {
+      it(`should throw error using state method and Enzyme render`, () => {
+        stateWrapper.should.have.property('state');
+        (() => stateWrapper.state('bestFruit'))
+        .should.throwError('Enzyme static render method (Cheerio) does not support React state.');
+      });
+    });
+  });
+
 });

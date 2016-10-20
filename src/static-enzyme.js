@@ -32,6 +32,10 @@ export default class StaticEnzyme extends BaseEnzyme {
     throw new Error('Enzyme static render method (Cheerio) does not support React props.');
   }
 
+  state() {
+    throw new Error('Enzyme static render method (Cheerio) does not support React state.');
+  }
+
   classNames() {
     return this.attr('class');
   }
