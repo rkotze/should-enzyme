@@ -5,6 +5,10 @@ export default class BaseEnzyme {
     return this.enzyme.prop(key);
   }
 
+  state(key) {
+    return this.enzyme.state(key);
+  }
+
   name() {
     return this.enzyme.name();
   }
