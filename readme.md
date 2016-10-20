@@ -6,6 +6,7 @@
 [should.js](https://shouldjs.github.io/) assertions for [enzyme](https://github.com/airbnb/enzyme)
 
 1. [Install](#install)
+1. [Setup](#setup)
 1. [Assertions](#assertions)
 	1. [`attr(key, [value])`](#attrkey-value)
 	1. [`checked()`](#checked)
@@ -18,6 +19,13 @@
 ## Install
 
 `npm i should-enzyme --save-dev`
+
+## Setup
+
+```js
+import 'should';
+import 'should-enzyme';
+```
 
 ## Assertions
 
