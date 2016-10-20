@@ -11,6 +11,7 @@
 	1. [`className(string)`](#classnamestring)
 	1. [`containsText(string)`](#containstextstring)
 	1. [`prop(key, [value])`](#propkey-value)
+	1. [`text(string)`](#textstring)
 
 ## Install
 
@@ -57,3 +58,28 @@ Check to see if wrapper contains text.
 | no     | yes   | yes     |
 
 Check to see if wrapper has prop and optionally check value.
+
+### `text(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Check to see if the exact text content is in wrapper.
+
+```js
+import React from 'react'
+import {mount, render, shallow} from 'enzyme'
+
+const TextFeature (props) => (
+      <div id='text-feature'>
+        <span id='text-span'>Test</span>
+      </div>
+    );
+
+const wrapper = mount(<TextFeature />) 
+
+wrapper.find('#text-span').should.have.text('Test')
+
+wrapper.find('#text-span').should.not.have.text('Other text')
+```
