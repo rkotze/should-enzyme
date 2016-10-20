@@ -6,7 +6,8 @@ export default class BaseEnzyme {
   }
 
   state(key) {
-    return this.enzyme.state(key);
+    if(typeof key !== 'undefined')
+      return this.enzyme.state(key);
   }
 
   name() {

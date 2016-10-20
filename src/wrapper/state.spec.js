@@ -31,8 +31,12 @@ describe('Get state from component', () => {
         stateWrapper.state('bestFruit').should.equal('mango');
       });
 
-      it('should return undefined if state does not exist', () => {
+      it('should return undefined if state key does not exist', () => {
         (typeof stateWrapper.state('madeUp') === 'undefined').should.be.true();
+      });
+
+      it('should return undefined if state without key', () => {
+        (typeof stateWrapper.state() === 'undefined').should.be.true();
       });
     });
   });
