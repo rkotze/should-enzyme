@@ -53,6 +53,9 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   value() {
+    if(this.name() === 'select')
+      return this.element.val();
+    
     return this.element.attr('value');
   }
 
