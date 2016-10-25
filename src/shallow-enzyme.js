@@ -31,9 +31,9 @@ export default class ShallowEnzyme extends BaseEnzyme {
   }
 
   value() {
-    if(this.name() === 'select')
+    if(['select', 'textarea'].indexOf(this.name()) > -1)
       return this.element.val();
-    
+
     return this.element.attr('value');
   }
 
