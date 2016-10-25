@@ -52,4 +52,8 @@ export default class StaticEnzyme extends BaseEnzyme {
     return this.element.is(':checked');
   }
 
+  value() {
+    return this.element.attr('value');
+  }
+
 }
