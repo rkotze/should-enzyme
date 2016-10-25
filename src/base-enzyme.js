@@ -17,4 +17,11 @@ export default class BaseEnzyme {
   text() {
     return this.enzyme.text();
   }
+
+  value() {
+    if(['select', 'textarea'].indexOf(this.name()) > -1)
+      return this.element.val();
+    
+    return this.element.attr('value');
+  }
 }
