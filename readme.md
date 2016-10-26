@@ -14,7 +14,8 @@
 	1. [`containsText(string)`](#containstextstring)
 	1. [`prop(key, [value])`](#propkey-value)
 	1. [`state(key, [value])`](#statekey-value)
-	1. [`text(string)`](#textstring)
+  1. [`text(string)`](#textstring)
+	1. [`value(string)`](#valuestring)
 
 ## Install
 
@@ -130,4 +131,42 @@ const wrapper = mount(<TextFeature />);
 wrapper.find('#text-span').should.have.text('Test');
 
 wrapper.find('#text-span').should.not.have.text('Other text');
+```
+
+### `value(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Assert on input field values this includes `<input>`, `<select>` and `<textarea>`.
+
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const FormInputsFixture = () => (
+  <form>
+    <input type="text" name="mug" defaultValue="coffee" />
+    <select defaultValue="pizza">
+      <option value="coffee">More coffee</option>
+      <option value="pizza">Pizza</option>
+      <option value="salad">Salad</option>
+    </select>
+    <textarea name="fruit" value="Hands or bunch of bananas?" />
+    <div id="failSelect">What value?</div>
+  </form>
+);
+
+const wrapper = mount(<FormInputsFixture />);
+
+wrapper.find('input').should.have.value('coffee');
+wrapper.find('input').should.not.have.value('pizza');
+
+wrapper.find('select').should.have.value('pizza');
+wrapper.find('select').should.not.have.value('salad');
+
+wrapper.find('textarea').should.have.value('Hands or bunch of bananas?');
+wrapper.find('textarea').should.not.have.value('Mangoes');
+
 ```

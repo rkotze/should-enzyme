@@ -49,8 +49,8 @@ describe('Should enzyme have a way to assert input values', () => {
         wrapper.find('select').should.not.have.value('coffee');
       });
 
-      it('should NOT have "bunch of mangos?" value from textarea', () => {
-        wrapper.find('textarea').should.not.have.value('bunch of mangos?');
+      it('should NOT have "bunch of mangoes?" value from textarea', () => {
+        wrapper.find('textarea').should.not.have.value('bunch of mangoes?');
       });
 
       it(`assert should fail to see useful error message for select element`, () => {
