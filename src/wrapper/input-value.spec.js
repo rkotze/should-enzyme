@@ -5,7 +5,7 @@ import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 // Info on forms elements in react:
 // https://facebook.github.io/react/docs/forms.html
 const InputsFixture = () => (
-  <input type="text" name="mug" value="coffee" />
+  <input type="text" name="mug" defaultValue="coffee" />
 );
 
 const SelectFixture = () => (
@@ -21,6 +21,10 @@ const SelectFixture = () => (
 // For this reason, you should not use children when setting <textarea> value
 const TextareaFixture = () => (
   <textarea name="fruit" value="Hands or bunch of bananas?" />
+);
+
+const NoInputFixture = () => (
+  <div>I don't have a value.</div>
 );
 
 describe('Form inputs', () => {
@@ -43,6 +47,11 @@ describe('Form inputs', () => {
 
       it('should get textarea value "Hands or bunch of bananas?"', () => {
         textarea.value().should.equal('Hands or bunch of bananas?');
+      });
+
+      it('should return "undefined" if value attribute', () => {
+        const noInput = WrapperBuilder(renderMethod(<NoInputFixture />));
+        (noInput.value() === undefined).should.be.true();
       });
     });
   });
