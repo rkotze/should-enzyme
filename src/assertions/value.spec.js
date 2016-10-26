@@ -52,9 +52,14 @@ describe('Should enzyme have a way to assert input values', () => {
         wrapper.find('textarea').should.not.have.value('bunch of mangos?');
       });
 
-      it(`assert should fail to see useful error message`, () => {
+      it(`assert should fail to see useful error message for select element`, () => {
         (() => wrapper.find('select').should.have.value('salad'))
-        .should.throwError(/expected 'select' to have text 'salad' but found 'pizza'/);
+        .should.throwError(/expected 'select' to have value 'salad' but found 'pizza'/);
+      });
+
+      it(`assert should fail to see useful error message for input element`, () => {
+        (() => wrapper.find('input').should.have.value('pizza'))
+        .should.throwError(/expected 'input' to have value 'pizza' but found 'coffee'/);
       });
     });
   });
