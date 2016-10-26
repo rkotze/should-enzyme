@@ -6,7 +6,6 @@ assertionBuilder(
     return String(this.value()) === expected;
   },
   function(expected) {
-    return ''; 
-    //`expected '${this.name()}' to have exact text of '${expected}' but found '${this.text()}'`;
+    return `expected '${this.name()}' to have text '${expected}' but found '${this.value()}'`; 
   }
 );
