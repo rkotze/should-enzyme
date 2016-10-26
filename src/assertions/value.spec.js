@@ -11,6 +11,7 @@ const FormInputsFixture = () => (
       <option value="salad">Salad</option>
     </select>
     <textarea name="fruit" value="Hands or bunch of bananas?" />
+    <div id="failSelect">What value?</div>
   </form>
 );
 
@@ -61,6 +62,12 @@ describe('Should enzyme have a way to assert input values', () => {
         (() => wrapper.find('input').should.have.value('pizza'))
         .should.throwError(/expected 'input' to have value 'pizza' but found 'coffee'/);
       });
+
+      it(`assert should fail when trying to get value when no value attribute`, () => {
+        (() => wrapper.find('#failSelect').should.have.value('pizza'))
+        .should.throwError(/element 'div' does not have a value/);
+      });
+
     });
   });
 });
