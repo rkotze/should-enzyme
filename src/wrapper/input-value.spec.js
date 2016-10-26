@@ -29,23 +29,20 @@ const NoInputFixture = () => (
 
 describe('Form inputs', () => {
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
-    let input, select, textarea;
-    before(() => {
-      input = WrapperBuilder(renderMethod(<InputsFixture />));
-      select = WrapperBuilder(renderMethod(<SelectFixture />));
-      textarea = WrapperBuilder(renderMethod(<TextareaFixture />));
-    });
 
     context(methodName, () => {
       it('should get value of "coffee"', () => {
+        const input = WrapperBuilder(renderMethod(<InputsFixture />));
         input.value().should.equal('coffee');
       });
 
       it('should get selected value of "pizza" in select list', () => {
+        const select = WrapperBuilder(renderMethod(<SelectFixture />));
         select.value().should.equal('pizza');
       });
 
       it('should get textarea value "Hands or bunch of bananas?"', () => {
+        const textarea = WrapperBuilder(renderMethod(<TextareaFixture />));
         textarea.value().should.equal('Hands or bunch of bananas?');
       });
 
