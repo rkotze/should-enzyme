@@ -14,7 +14,7 @@ const FormInputsFixture = () => (
   </form>
 );
 
-describe('Should enzyme have a way to extract input values', () => {
+describe('Should enzyme have a way to assert input values', () => {
   const shouldEnzyme = should;
   it('should have new method value', () => {
     shouldEnzyme.should.have.property('value');
@@ -38,6 +38,18 @@ describe('Should enzyme have a way to extract input values', () => {
 
       it('should have "Hands or bunch of bananas?" value from textarea', () => {
         wrapper.find('textarea').should.have.value('Hands or bunch of bananas?');
+      });
+
+      it('should NOT have "pizza" in input text type value', () => {
+        wrapper.find('input').should.not.have.value('pizza');
+      });
+
+      it('should NOT have "coffee" value from select', () => {
+        wrapper.find('select').should.not.have.value('coffee');
+      });
+
+      it('should NOT have "bunch of mangos?" value from textarea', () => {
+        wrapper.find('textarea').should.not.have.value('bunch of mangos?');
       });
 
       it(`assert should fail to see useful error message`, () => {
