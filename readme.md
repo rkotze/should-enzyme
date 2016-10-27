@@ -15,7 +15,7 @@
 	1. [`prop(key, [value])`](#propkey-value)
 	1. [`state(key, [value])`](#statekey-value)
   1. [`text(string)`](#textstring)
-	1. [`value(string)`](#valuestring)
+  1. [`value(string)`](#valuestring)
 
 ## Install
 
