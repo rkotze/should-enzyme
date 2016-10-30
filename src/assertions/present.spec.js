@@ -34,7 +34,6 @@ describe('Present: component added', () => {
       });
 
       it('should see useful error message when wrapper is expected to be present', () => {
-        console.log(fries);
         (() => fries.should.be.present())
         .should.throwError(/expected to be present/);
       });
