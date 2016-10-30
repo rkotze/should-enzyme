@@ -77,6 +77,12 @@ describe.only('Assertion builder', () => {
     wrapperProps.muse.should.be.calledWith('stuffA', 'stuffB');
   });
 
+  it('assertFn should be called with stuff and should object', () => {
+    renderDom.should.be.muse('stuff');
+    assertFnSpy.should.be.calledOnce();
+    assertFnSpy.should.be.calledWith('stuff', sinon.match.object);
+  });
+
   it('assertMessageFn should be called to set error message and pass should object', () => {
     renderDom.should.be.muse('stuff');
     assertMessageFnSpy.should.be.calledOnce();
