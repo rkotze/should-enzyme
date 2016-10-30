@@ -6,6 +6,6 @@ assertionBuilder(
     return this.isPresent();
   },
   function () {
-    return 'expected to be present';
+      return 'expected to be present';
   }
 );

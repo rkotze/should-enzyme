@@ -9,7 +9,7 @@ const Fixture = () => (
   <div>Content here</div>
 );
 
-describe.only('Assertion builder', () => {
+describe('Assertion builder', () => {
   let assertionAddSpy,
   wrapperBuilderSpy,
   wrapperProps,
@@ -77,10 +77,10 @@ describe.only('Assertion builder', () => {
     wrapperProps.muse.should.be.calledWith('stuffA', 'stuffB');
   });
 
-  it('assertMessageFn should be called to set error message and pass should object', () => {
+  it('assertMessageFn should be called to set error message', () => {
     renderDom.should.be.muse('stuff');
     assertMessageFnSpy.should.be.calledOnce();
-    assertMessageFnSpy.should.be.calledWith('stuff', sinon.match.object);
+    assertMessageFnSpy.should.be.calledWith('stuff');
   });
 
   it('in assertMessageFn wrapper method "name" and "classNames" should be called', () => {

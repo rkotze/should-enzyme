@@ -16,8 +16,8 @@ describe('Present: component added', () => {
   it('should have new method present', () => {
     shouldEnzyme.should.have.property('present');
   });
-// , 'mount', 'render'
-  eachEnzymeMethod(['shallow'], (renderMethod, methodName) => {
+
+  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
         wrapper = renderMethod(<PresentFixture />);
@@ -34,14 +34,15 @@ describe('Present: component added', () => {
       });
 
       it('should see useful error message when wrapper is expected to be present', () => {
+        console.log(fries);
         (() => fries.should.be.present())
         .should.throwError(/expected to be present/);
       });
 
-      it('should see useful error message when wrapper is expected not to be there', () => {
-        (() => burgers.should.not.be.present())
-        .should.throwError(/expected to NOT be present/);
-      });
+      // it('should see useful error message when wrapper is expected not to be there', () => {
+      //   (() => checked.should.not.be.checked())
+      //   .should.throwError(/expected 'div' to NOT be present but was found/);
+      // });
     });
   });
 });
