@@ -21,6 +21,7 @@ export function assertionBuilder(
   Assertion.add(name, function() {
     const wrapper = wrapperBuilder(this.obj),
     args = slice.call(arguments);
+    args.push(this);
 
     this.params = {
       message: failMessageFn.apply(wrapper, args)
