@@ -22,7 +22,7 @@ describe('Present: component added', () => {
       before(() => {
         wrapper = renderMethod(<PresentFixture />);
         burgers = wrapper.find('#burgers');
-        fries = wrapper.find('#noFries');
+        fries = wrapper.find('#fries');
       });
 
       it('should be "present"', () => {
@@ -33,10 +33,11 @@ describe('Present: component added', () => {
         fries.should.not.be.present();
       });
 
-      // it('should see useful error message when wrapper is expected to be present', () => {
-      //   (() => burgers.should.be.present())
-      //   .should.throwError(/expected 'div' to be present but was not found/);
-      // });
+      it('should see useful error message when wrapper is expected to be present', () => {
+        console.log(fries);
+        (() => fries.should.be.present())
+        .should.throwError(/expected to be present/);
+      });
 
       // it('should see useful error message when wrapper is expected not to be there', () => {
       //   (() => checked.should.not.be.checked())
