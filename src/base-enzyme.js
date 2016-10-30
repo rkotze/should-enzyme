@@ -24,4 +24,8 @@ export default class BaseEnzyme {
     
     return this.element.attr('value');
   }
+
+  isPresent() {
+    return this.enzyme.length > 0;
+  }
 }
