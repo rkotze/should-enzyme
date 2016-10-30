@@ -38,10 +38,10 @@ describe('Present: component added', () => {
         .should.throwError(/expected to be present/);
       });
 
-      // it('should see useful error message when wrapper is expected not to be there', () => {
-      //   (() => checked.should.not.be.checked())
-      //   .should.throwError(/expected 'div' to NOT be present but was found/);
-      // });
+      it('should see useful error message when wrapper is expected NOT to be there', () => {
+        (() => burgers.should.pizza.be.present())
+        .should.throwError(/expected NOT to be present/);
+      });
     });
   });
 });
