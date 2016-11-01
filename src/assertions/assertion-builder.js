@@ -1,9 +1,8 @@
 import WrapperBuilder from '../wrapper';
 import should from 'should';
 
-const Assertion = should.Assertion,
+let Assertion = should.Assertion,
 slice = Array.prototype.slice;
-
 /**
  * assertionBuilder: extend shouldjs api and access ShouldEnzyme wrapper to assert with.
  *
@@ -23,9 +22,29 @@ export function assertionBuilder(
     args = slice.call(arguments);
 
     this.params = {
-      message: failMessageFn.apply(wrapper, args)
+      shouldEnzymeMessage: failMessageFn.apply(wrapper, args)
     };
 
     should(assertFn.apply(wrapper, args)).be.true(' ');
   });
+  
 }
+
+/**
+  override generateMessage in should
+ */
+const copyGenerateMessage = should.AssertionError.prototype.generateMessage;
+
+should.AssertionError.prototype = Object.create(should.AssertionError.prototype, {
+  generateMessage: {
+    value: function() {
+      if(typeof this.shouldEnzymeMessage === 'function')
+        return this.shouldEnzymeMessage(this);
+
+      if(typeof this.shouldEnzymeMessage === 'string')
+        return this.shouldEnzymeMessage;
+
+      return copyGenerateMessage();
+    }
+  }
+});
