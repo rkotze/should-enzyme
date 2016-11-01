@@ -13,9 +13,9 @@ slice = Array.prototype.slice;
  */
 
 export function assertionBuilder(
-  name, 
-  assertFn, 
-  failMessageFn, 
+  name,
+  assertFn,
+  failMessageFn,
   wrapperBuilder = WrapperBuilder) {
 
   Assertion.add(name, function() {
@@ -27,5 +27,17 @@ export function assertionBuilder(
     };
 
     should(assertFn.apply(wrapper, args)).be.true(' ');
+  });
+}
+
+
+export function assertionBuilder1(name, assertFn, wrapperBuilder = WrapperBuilder) {
+  Assertion.add(name, function() {
+    const wrapper = wrapperBuilder(this.obj),
+      args = slice.call(arguments);
+
+    args.unshift(wrapper);
+
+    assertFn.apply(this, args);
   });
 }

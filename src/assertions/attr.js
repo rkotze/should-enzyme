@@ -1,15 +1,18 @@
-import { assertionBuilder } from './assertion-builder';
-import assertKeyValue from '../assert-key-value';
+import { assertionBuilder1 } from './assertion-builder';
+import should from 'should';
 
-assertionBuilder(
-  'attr', 
-  function (expectedKey, expectedValue) {
-    return assertKeyValue(this.attr(expectedKey), expectedValue);
-  },
-  function (expectedKey, expectedValue) {
-    if(arguments.length === 2 && typeof this.attr(expectedKey) !== 'undefined')
-      return `expected '${this.name()}' attribute '${expectedKey}' to have value '${expectedValue}', instead found '${this.attr(expectedKey)}'`;
-
-    return `expected '${this.name()}' to have attribute '${expectedKey}'`;
+assertionBuilder1(
+  'attr',
+  function (wrapper, key, value) {
+    this.params = {
+      obj: wrapper.name(),
+      operator: `to have attribute '${key}'`
+    };
+    this.obj = wrapper.attr(key);//TODO
+    should(this.obj).be.not.undefined();
+    if(value !== void(0)) {
+      this.params.operator += ` with value '${should.format(value)}' (found '${should.format(this.obj)}')`;
+      should(this.obj).be.equal(value);
+    }
   }
 );

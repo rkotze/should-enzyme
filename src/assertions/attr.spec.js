@@ -26,7 +26,7 @@ describe('Should enzyme add attr feature', () => {
       });
 
       it('should have attribute "title"', () => {
-        wrapper.should.have.attr('title');
+        wrapper.should.not.have.attr('title');
       });
 
       it('should have attribute "title" with value "enzyme"', () => {
@@ -54,6 +54,10 @@ describe('Should enzyme add attr feature', () => {
       it('should see useful error message for incorrect attribute', () => {
         (() => wrapper.should.have.attr('pizza', 'stuff'))
         .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
+      });
+
+      it('should allow to change assertions for values', () => {
+        wrapper.should.have.attr('title').which.is.not.empty();
       });
     });
   });
