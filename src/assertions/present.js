@@ -1,16 +1,15 @@
-import { assertionBuilder } from './assertion-builder';
+import WrapperBuilder from '../wrapper';
+import should from 'should';
 
-assertionBuilder(
-  'present', 
-  function () {
-    return this.isPresent();
-  },
-  function () {
-    return function(assertion){
-      if(assertion.negate)
-        return 'expected NOT to be present';
+const Assertion = should.Assertion;
 
-      return 'expected to be present';
-    };
-  }
-);
+Assertion.add('present', function(){
+  const wrapper = WrapperBuilder(this.obj);
+
+  this.params = {
+    actual: 'component',
+    operator: 'to be present'
+  };
+
+  should(wrapper.isPresent()).be.true(' ');
+});

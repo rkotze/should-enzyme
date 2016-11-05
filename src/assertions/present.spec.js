@@ -35,12 +35,12 @@ describe('Present: component added', () => {
 
       it('should see useful error message when wrapper is expected to be present', () => {
         (() => fries.should.be.present())
-        .should.throwError(/expected to be present/);
+        .should.throwError(/^expected 'component' to be present/);
       });
 
       it('should see useful error message when wrapper is expected NOT to be there', () => {
         (() => burgers.should.not.present())
-        .should.throwError(/expected NOT to be present/);
+        .should.throwError(/^expected 'component' not to be present/);
       });
     });
   });

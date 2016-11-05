@@ -12,9 +12,9 @@ slice = Array.prototype.slice;
  */
 
 export function assertionBuilder(
-  name, 
-  assertFn, 
-  failMessageFn, 
+  name,
+  assertFn,
+  failMessageFn,
   wrapperBuilder = WrapperBuilder) {
 
   Assertion.add(name, function() {
@@ -22,29 +22,10 @@ export function assertionBuilder(
     args = slice.call(arguments);
 
     this.params = {
-      shouldEnzymeMessage: failMessageFn.apply(wrapper, args)
+      message: failMessageFn.apply(wrapper, args)
     };
 
     should(assertFn.apply(wrapper, args)).be.true(' ');
   });
-  
+
 }
-
-/**
-  override generateMessage in should
- */
-const copyGenerateMessage = should.AssertionError.prototype.generateMessage;
-
-should.AssertionError.prototype = Object.create(should.AssertionError.prototype, {
-  generateMessage: {
-    value: function() {
-      if(typeof this.shouldEnzymeMessage === 'function')
-        return this.shouldEnzymeMessage(this);
-
-      if(typeof this.shouldEnzymeMessage === 'string')
-        return this.shouldEnzymeMessage;
-
-      return copyGenerateMessage();
-    }
-  }
-});
