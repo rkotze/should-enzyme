@@ -1,6 +1,6 @@
 {
   "name": "should-enzyme",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Useful functions for testing React components with Enzyme and Shouldjs",
   "scripts": {
     "assert-imports": "node test-setup/assert-imports.js",
