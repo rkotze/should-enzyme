@@ -1,6 +1,6 @@
 # should-enzyme
 
-[![npm version](https://img.shields.io/npm/v/should-enzyme.svg)](https://www.npmjs.com/package/should-enzyme) 
+[![npm version](https://img.shields.io/npm/v/should-enzyme.svg)](https://www.npmjs.com/package/should-enzyme)
 [![Build Status](https://travis-ci.org/rkotze/should-enzyme.svg?branch=master)](https://travis-ci.org/rkotze/should-enzyme)
 
 [should.js](https://shouldjs.github.io/) assertions for [enzyme](https://github.com/airbnb/enzyme)
@@ -12,6 +12,7 @@
 	1. [`checked()`](#checked)
 	1. [`className(string)`](#classnamestring)
 	1. [`containsText(string)`](#containstextstring)
+	1. [`present()`](#present)
 	1. [`prop(key, [value])`](#propkey-value)
 	1. [`state(key, [value])`](#statekey-value)
   1. [`text(string)`](#textstring)
@@ -34,7 +35,7 @@ import 'should-enzyme';
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| yes     | yes   | yes     |
+| yes    | yes   | yes     |
 
 Check to see if element has attribute and optionally check value.
 
@@ -42,7 +43,7 @@ Check to see if element has attribute and optionally check value.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| yes     | yes   | yes     |
+| yes    | yes   | yes     |
 
 Check to see if input type checkbox is checked.
 
@@ -50,7 +51,7 @@ Check to see if input type checkbox is checked.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| yes     | yes   | yes     |
+| yes    | yes   | yes     |
 
 Check to see if wrapper has css class.
 
@@ -58,9 +59,38 @@ Check to see if wrapper has css class.
 
 | render | mount | shallow |
 | -------|-------|-------- |
-| yes     | yes   | yes     |
+| yes    | yes   | yes     |
 
 Check to see if wrapper contains text.
+
+### `present()`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Check to see if the wrapper is present.
+
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const PresentFixture = () => (
+  <div>
+    <div id="burgers">with cheese</div>
+    <div>side of fries</div>
+  </div>
+);
+
+const wrapper = mount(<PresentFeature />);
+const burgers = wrapper.find('#burgers');
+const salad = wrapper.find('#salad');
+
+burgers.should.be.present();
+
+salad.should.not.be.present();
+
+```
 
 ### `prop(key, [value])`
 
