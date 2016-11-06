@@ -15,8 +15,8 @@
 	1. [`present()`](#present)
 	1. [`prop(key, [value])`](#propkey-value)
 	1. [`state(key, [value])`](#statekey-value)
-  1. [`text(string)`](#textstring)
-  1. [`value(string)`](#valuestring)
+	1. [`text(string)`](#textstring)
+	1. [`value(string)`](#valuestring)
 
 ## Install
 
@@ -57,6 +57,7 @@ const wrapper = mount(<AttrFeature />);
 wrapper.should.have.attr('title');
 wrapper.should.have.attr('title', 'enzyme');
 wrapper.should.not.have.attr('pizza');
+wrapper.should.not.have.attr('title', 'stuff');
 ```
 
 ### `checked()`
