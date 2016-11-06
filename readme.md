@@ -39,6 +39,26 @@ import 'should-enzyme';
 
 Check to see if element has attribute and optionally check value.
 
+```js
+import {mount, render, shallow} from 'enzyme';
+import React, { PropTypes } from 'react';
+
+const AttrFixture = ({ children, title }) => (
+  <div title={title}>content</div>
+);
+
+AttrFixture.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string
+};
+
+const wrapper = mount(<AttrFeature />);
+
+wrapper.should.have.attr('title');
+wrapper.should.have.attr('title', 'enzyme');
+wrapper.should.not.have.attr('pizza');
+```
+
 ### `checked()`
 
 | render | mount | shallow |
