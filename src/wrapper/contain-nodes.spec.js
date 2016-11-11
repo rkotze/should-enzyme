@@ -2,6 +2,10 @@ import WrapperBuilder from './index';
 import React from 'react';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 
+const Banana = () => {
+  return (<div>Banana</div>);
+};
+
 const Apple = (props) => {
   return (<div>Apple</div>);
 };
@@ -30,6 +34,10 @@ describe('When component is rendered', () => {
           <Apple name="Jim" />,
           <Apple name="Bob" />
         ]).should.be.true();
+      });
+
+      it('should not contain a Banana component', () => {
+        containNodesWrapper.containNodes(<Banana />).should.be.false();
       });
     });
   });

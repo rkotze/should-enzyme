@@ -1,6 +1,7 @@
 import './assertions/attr';
 import './assertions/checked';
 import './assertions/class-name';
+import './assertions/contain';
 import './assertions/prop';
 import './assertions/present';
 import './assertions/text';
