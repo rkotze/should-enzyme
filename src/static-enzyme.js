@@ -52,4 +52,8 @@ export default class StaticEnzyme extends BaseEnzyme {
     return this.element.is(':checked');
   }
 
+  containNodes(){
+    throw new Error('Enzyme static render method (Cheerio) does not support "contain" check');
+  }
+
 }

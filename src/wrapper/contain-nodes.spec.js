@@ -22,7 +22,28 @@ describe('When component is rendered', () => {
 
     context(methodName, () => {
       it('should contain an Apple called Bob', () => {
-        containNodesWrapper.containNodes(<Apple name="Jim" />).should.be.true();
+        containNodesWrapper.containNodes(<Apple name="Bob" />).should.be.true();
+      });
+
+      it('should contain two apples called Jim and Bob', () => {
+        containNodesWrapper.containNodes([
+          <Apple name="Jim" />,
+          <Apple name="Bob" />
+        ]).should.be.true();
+      });
+    });
+  });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    let containNodesWrapper;
+    before(() => {
+      containNodesWrapper = WrapperBuilder(renderMethod(<ContainNodesFixture />));
+    });
+
+    context(methodName, () => {
+      it('should throw an error when checking for Apple', () => {
+        (() => containNodesWrapper.containNodes(<Apple name="Bob" />))
+        .should.throwError('Enzyme static render method (Cheerio) does not support "contain" check');
       });
     });
   });
