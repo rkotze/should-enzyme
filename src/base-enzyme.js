@@ -28,4 +28,8 @@ export default class BaseEnzyme {
   isPresent() {
     return this.enzyme.length > 0;
   }
+
+  containNodes(node) {
+    return this.enzyme.contains(node);
+  }
 }
