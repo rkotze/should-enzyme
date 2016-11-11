@@ -35,10 +35,30 @@ describe('Contains a component inside of a parent', () => {
         wrapper.should.contain(<Apple name="Bob" />);
       });
 
+      it('should contain two Apples with name Bob and Jim', () => {
+        wrapper.should.contain([
+          <Apple name="Jim" />,
+          <Apple name="Bob" />
+        ]);
+      });
+
       it('should NOT contain a Banana', () => {
         wrapper.should.not.be.contain(<Banana />);
       });
 
+    });
+  });
+
+  eachEnzymeMethod(['render'], (renderMethod, methodName) => {
+    context(methodName, () => {
+      before(() => {
+        wrapper = renderMethod(<ContainNodesFixture />);
+      });
+
+      it('should throw an error when using contains', () => {
+        (() => wrapper.should.contain(<Apple name="Bob" />))
+        .should.throwError();
+      });
     });
   });
 });
