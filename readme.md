@@ -11,6 +11,7 @@
 	1. [`attr(key, [value])`](#attrkey-value)
 	1. [`checked()`](#checked)
 	1. [`className(string)`](#classnamestring)
+  1. [`contain(node)`](#containnode)
 	1. [`containsText(string)`](#containstextstring)
 	1. [`present()`](#present)
 	1. [`prop(key, [value])`](#propkey-value)
@@ -76,6 +77,39 @@ Check to see if input type checkbox is checked.
 
 Check to see if wrapper has css class.
 
+### `contain(node)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper contains the expected node.
+
+```js
+import React from 'react';
+import {mount, shallow} from 'enzyme';
+
+const Banana = () => {
+  return (<div>Banana</div>);
+};
+
+const Apple = (props) => {
+  return (<div>Apple</div>);
+};
+
+const ContainNodesFixture = () => {
+  return (<div>
+      <Apple name="Jim" />
+      <Apple name="Bob" />
+    </div>);
+};
+
+const wrapper = mount(<ContainNodesFixture />);
+
+wrapper.should.contain(<Apple name="Bob" />);
+wrapper.should.not.be.contain(<Banana />);
+```
+
 ### `containsText(string)`
 
 | render | mount | shallow |
@@ -121,6 +155,30 @@ salad.should.not.be.present();
 
 Check to see if wrapper has prop and optionally check value.
 
+```js
+import React from 'react';
+import {mount, shallow} from 'enzyme';
+
+const PropFixture = ({ children, id }) => (
+  <div id={id}>salad</div>
+);
+
+PropFixture.propTypes = {
+  children: PropTypes.node,
+  id: PropTypes.string
+};
+
+const wrapper = mount(<PropFeature id="mango" />);
+
+wrapper.should.have.prop('id');
+wrapper.should.not.have.prop('iDontExistProp');
+
+wrapper.should.have.prop('id', 'mango');
+wrapper.should.not.have.prop('id', 'banana');
+
+wrapper.should.not.have.prop('iDontExistProp', 'banana');
+```
+
 ### `state(key, [value])`
 
 | render | mount | shallow |
@@ -131,7 +189,7 @@ Check to see if wrapper has state property and optionally check value.
 
 ```js
 import React, { Component } from 'react';
-import {mount, render, shallow} from 'enzyme'
+import {mount, shallow} from 'enzyme';
 
 class StateFixture extends Component {
   constructor(){
@@ -156,6 +214,8 @@ wrapper.should.have.state('bestFruit');
 wrapper.should.not.have.state('anotherFruit');
 
 wrapper.should.have.state('bestFruit', 'mango');
+wrapper.should.not.have.state('bestFruit', 'orange');
+
 wrapper.should.not.have.state('anotherFruit', 'banana');
 ```
 
