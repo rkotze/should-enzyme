@@ -11,6 +11,10 @@ slice = Array.prototype.slice;
  * @param failMessageFn   callback return fail message, args passed through, this is BaseEnzyme.
  */
 
+/* Deprecated 
+ * Offers too little flexibility to build custom assertion, best to use the should.Assertion.add.
+ * see src/assertions/contain.js for example
+*/
 export function assertionBuilder(
   name,
   assertFn,
