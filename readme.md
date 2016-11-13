@@ -96,6 +96,20 @@ tea.should.not.be.checked();
 
 Check to see if wrapper has css class.
 
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const ClassNameFixture = () => (
+  <div className="special burger">Content here</div>
+);
+
+wrapper = mount(<ClassNameFixture />);
+
+wrapper.should.have.className('special');
+wrapper.should.not.have.className('pizza');
+```
+
 ### `contain(node)`
 
 | render | mount | shallow |
