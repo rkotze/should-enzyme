@@ -44,6 +44,11 @@ describe('Contains a component inside of a parent', () => {
         .should.throwError(/^expected '(div|ContainNodesFixture)' to contain a '<Banana \/>'/);
       });
 
+      it('should see useful error message when Apple name Bob is not expected but found', () => {
+        (() => wrapper.should.not.contain(<Apple name="Bob" />))
+        .should.throwError(/^expected '(div|ContainNodesFixture)' not to contain a '<Apple name="Bob" \/>'/);
+      });
+
     });
   });
 
