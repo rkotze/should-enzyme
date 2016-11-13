@@ -45,7 +45,9 @@
     "cheerio": "0.19.x || 0.20.x || 0.22.x",
     "enzyme": "1.x || 2.x"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-element-to-jsx-string": "^5.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.7.2",

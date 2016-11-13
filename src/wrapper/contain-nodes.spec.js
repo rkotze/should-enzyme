@@ -39,6 +39,7 @@ describe('When component is rendered', () => {
       it('should not contain a Banana component', () => {
         containNodesWrapper.containNodes(<Banana />).should.be.false();
       });
+      
     });
   });
 
