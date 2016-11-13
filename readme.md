@@ -104,7 +104,7 @@ const ClassNameFixture = () => (
   <div className="special burger">Content here</div>
 );
 
-wrapper = mount(<ClassNameFixture />);
+const wrapper = mount(<ClassNameFixture />);
 
 wrapper.should.have.className('special');
 wrapper.should.not.have.className('pizza');
@@ -151,6 +151,20 @@ wrapper.should.not.be.contain(<Banana />);
 
 Check to see if wrapper contains text.
 
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const TextFixture = () => (
+  <div>Content here. More content</div>
+);
+
+cont wrapper = mount(<TextFixture />);
+
+wrapper.should.containsText('Content here');
+wrapper.should.not.containsText('pizza');
+```
+
 ### `present()`
 
 | render | mount | shallow |
@@ -175,9 +189,7 @@ const burgers = wrapper.find('#burgers');
 const salad = wrapper.find('#salad');
 
 burgers.should.be.present();
-
 salad.should.not.be.present();
-
 ```
 
 ### `prop(key, [value])`
