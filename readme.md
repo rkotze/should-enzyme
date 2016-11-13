@@ -8,16 +8,16 @@
 1. [Install](#install)
 1. [Setup](#setup)
 1. [Assertions](#assertions)
-	1. [`attr(key, [value])`](#attrkey-value)
-	1. [`checked()`](#checked)
-	1. [`className(string)`](#classnamestring)
+  1. [`attr(key, [value])`](#attrkey-value)
+  1. [`checked()`](#checked)
+  1. [`className(string)`](#classnamestring)
   1. [`contain(node)`](#containnode)
-	1. [`containsText(string)`](#containstextstring)
-	1. [`present()`](#present)
-	1. [`prop(key, [value])`](#propkey-value)
-	1. [`state(key, [value])`](#statekey-value)
-	1. [`text(string)`](#textstring)
-	1. [`value(string)`](#valuestring)
+  1. [`containsText(string)`](#containstextstring)
+  1. [`present()`](#present)
+  1. [`prop(key, [value])`](#propkey-value)
+  1. [`state(key, [value])`](#statekey-value)
+  1. [`text(string)`](#textstring)
+  1. [`value(string)`](#valuestring)
 
 ## Install
 
@@ -68,6 +68,25 @@ wrapper.should.not.have.attr('title', 'stuff');
 | yes    | yes   | yes     |
 
 Check to see if input type checkbox is checked.
+
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const CheckedFixture = () => (
+  <div>
+    <input id="coffee" type="checkbox" defaultChecked value="coffee" />
+    <input id="tea" type="checkbox" value="tea" />
+  </div>
+);
+
+const wrapper = renderMethod(<CheckedFixture />);
+const coffee = wrapper.find('#coffee');
+const tea = wrapper.find('#tea');
+
+coffee.should.checked();
+tea.should.not.be.checked();
+```
 
 ### `className(string)`
 
@@ -279,5 +298,4 @@ wrapper.find('select').should.not.have.value('salad');
 
 wrapper.find('textarea').should.have.value('Hands or bunch of bananas?');
 wrapper.find('textarea').should.not.have.value('Mangoes');
-
 ```
