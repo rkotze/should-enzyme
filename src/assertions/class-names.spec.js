@@ -25,14 +25,14 @@ describe('Should enzyme add check multiple class names', () => {
         wrapper.should.have.classNames('special chicken');
       });
 
-      // it('should NOT contain class name "pizza" in ClassNameFixture', () => {
-      //   wrapper.should.not.have.className('pizza');
-      // });
+      it('should NOT contain class name "pizza" in ClassNamesFixture', () => {
+        wrapper.should.not.have.classNames('special pizza');
+      });
 
-      // it('assert should fail to see useful error message', () => {
-      //   (() => wrapper.should.have.className('pizza'))
-      //   .should.throwError(/expected '(div|ClassNameFixture)' to have className 'pizza' but found 'special burger'/);
-      // });
+      it('assert should fail to see error message showing missing classes', () => {
+        (() => wrapper.should.have.classNames('buffalo pizza'))
+        .should.throwError(/expected '(div|ClassNamesFixture)' to contain classNames 'buffalo pizza' but found 'special buffalo chicken burger'/);
+      });
     });
   });
 });

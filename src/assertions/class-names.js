@@ -5,19 +5,20 @@ const Assertion = should.Assertion;
 
 Assertion.add('classNames', function(expected){
   const wrapper = WrapperBuilder(this.obj),
-  actualClasses = wrapper.classNames().split(' '),
+  actualClasses = wrapper.classNames(),
   expectedClasses = expected.split(' ');
 
-  // this.params = {
-  //   actual: 'component',
-  //   operator: 'to be present'
-  // };
+  this.params = {
+    actual: wrapper.name(),
+    operator: `to contain classNames '${expected}' but found '${actualClasses}'`
+  };
 
   should(expectedClasses.every(containsClassNames(actualClasses))).be.true(' ');
 });
 
 let containsClassNames = (actualClasses) => {
+  const splitClasses = actualClasses.split(' ');
   return (className) => {
-    return actualClasses.indexOf(className) > -1;
+    return splitClasses.indexOf(className) > -1;
   };
 };
