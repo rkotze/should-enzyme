@@ -13,6 +13,7 @@
   1. [`className(string)`](#classnamestring)
   1. [`contain(node)`](#containnode)
   1. [`containsText(string)`](#containstextstring)
+  1. [`exactClassNames(string}`](#exactClassNamesstring)
   1. [`present()`](#present)
   1. [`prop(key, [value])`](#propkey-value)
   1. [`state(key, [value])`](#statekey-value)
@@ -163,6 +164,29 @@ cont wrapper = mount(<TextFixture />);
 
 wrapper.should.containsText('Content here');
 wrapper.should.not.containsText('pizza');
+```
+
+### `exactClassNames(string)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Check to see if wrapper has the exact class names.
+
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const ClassNamesFixture = () => (
+  <div className="special buffalo chicken burger">Content here</div>
+);
+
+cont wrapper = mount(<ClassNamesFixture />);
+
+wrapper.should.have.exactClassNames('special buffalo chicken burger');
+wrapper.should.not.have.exactClassNames('special buffalo chicken');
+wrapper.should.not.have.exactClassNames('other class names');
 ```
 
 ### `present()`
