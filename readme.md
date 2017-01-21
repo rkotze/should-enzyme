@@ -13,7 +13,7 @@
   1. [`className(string)`](#classnamestring)
   1. [`contain(node)`](#containnode)
   1. [`containsText(string)`](#containstextstring)
-  1. [`exactClassNames(string}`](#exactClassNamesstring)
+  1. [`exactClassNames(string}`](#exactclassnamesstring)
   1. [`present()`](#present)
   1. [`prop(key, [value])`](#propkey-value)
   1. [`state(key, [value])`](#statekey-value)
