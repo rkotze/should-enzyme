@@ -122,6 +122,12 @@ describe('Different enzyme render method', () => {
         (() => wrapper.prop('id'))
         .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
       });
+
+      it(`should throw error using props method and Enzyme render`, () => {
+        wrapper.should.have.property('props');
+        (() => wrapper.props())
+        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
+      });
     });
   });
 });
