@@ -103,7 +103,9 @@ describe('Different enzyme render method', () => {
         wrapper.props().should.containDeep({ id: 'free', title: 'amazing' });
       });
 
-      
+      it('providing property names in array should return only those props', () => {
+        wrapper.props(['id', 'title']).should.deepEqual({ id: 'free', title: 'amazing' });
+      });
     });
   });
 

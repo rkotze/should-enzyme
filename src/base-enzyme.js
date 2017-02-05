@@ -5,8 +5,17 @@ export default class BaseEnzyme {
     return this.enzyme.prop(key);
   }
 
-  props() {
-    return this.enzyme.props();
+  props(keys) {
+    const props = this.enzyme.props();
+    
+    if(Array.isArray(keys)){
+      return keys.reduce(function(acc, key) {
+        acc[key] = props[key];
+        return acc;
+      }, {});
+    }
+
+    return props;
   }
 
   state(key) {
