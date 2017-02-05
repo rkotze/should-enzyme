@@ -20,4 +20,4 @@ Assertion.add('prop', function(expectedKey, expectedValue){
     };
     should(assertKeyValue(wrapper.prop(expectedKey))).be.true(' ');
   }
-});
+}); 

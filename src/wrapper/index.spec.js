@@ -97,6 +97,13 @@ describe('Different enzyme render method', () => {
         wrapper.should.have.property('prop');
         wrapper.prop('id').should.equal('free');
       });
+
+      it('should get both props "id" and "title"', () => {
+        wrapper.should.have.property('props');
+        wrapper.props().should.containDeep({ id: 'free', title: 'amazing' });
+      });
+
+      
     });
   });
 

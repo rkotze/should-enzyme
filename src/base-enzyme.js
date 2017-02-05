@@ -5,6 +5,10 @@ export default class BaseEnzyme {
     return this.enzyme.prop(key);
   }
 
+  props() {
+    return this.enzyme.props();
+  }
+
   state(key) {
     if(typeof key !== 'undefined')
       return this.enzyme.state(key);
