@@ -8,7 +8,7 @@ Assertion.add('props', function(expectedKeyValues){
   const wrapper = WrapperBuilder(this.obj),
   props = wrapper.props(Object.keys(expectedKeyValues));
 
-  props.should.deepEqual(expectedKeyValues);
+  expectedKeyValues.should.deepEqual(props);
 
   // if(arguments.length > 1 && typeof wrapper.prop(expectedKey) !== 'undefined') {
   //   this.params = {

@@ -2,7 +2,7 @@ import './props';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React, { PropTypes } from 'react';
 
-const PropsFixture = ({ children, id,  }) => (
+const PropsFixture = ({ children, id, title, total }) => (
   <div id={id}>content</div>
 );
 
@@ -10,7 +10,7 @@ PropsFixture.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string,
   title: PropTypes.string,
-  sum: PropTypes.number
+  total: PropTypes.number
 };
 
 describe('Should enzyme add props', () => {
@@ -31,18 +31,18 @@ describe('Should enzyme add props', () => {
         wrapper.should.have.props({'id': 'content'});
       });
 
-      // it('should NOT have prop "pizza" in PropsFixture', () => {
-      //   wrapper.should.not.have.prop('pizza');
-      // });
+      it('should NOT have prop "food = pizza" in PropsFixture', () => {
+        wrapper.should.not.have.props({food: 'pizza'});
+      });
 
-      // it('should have prop "id" but NOT with value "stuff" in PropsFixture', () => {
-      //   wrapper.should.not.have.prop('id', 'stuff');
-      // });
+      it('should have prop "id" but NOT with value "stuff" in PropsFixture', () => {
+        wrapper.should.not.have.props({'id': 'stuff'});
+      });
 
-      // it('should error with a useful error message for missing pizza prop', () => {
-      //   (() => wrapper.should.have.prop('pizza'))
-      //   .should.throwError(/expected '(div|PropsFixture)' to have prop 'pizza'/);
-      // });
+      it.skip('should error with a useful error message for missing "food = pizza" prop', () => {
+        (() => wrapper.should.have.props({food: 'pizza'}))
+        .should.throwError(/expected '(div|PropsFixture)' to have prop 'pizza'/);
+      });
 
       // it('should error with a useful error message for incorrect expected prop value', () => {
       //   (() => wrapper.should.have.prop('id', 'stuff'))

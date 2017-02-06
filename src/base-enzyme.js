@@ -10,7 +10,8 @@ export default class BaseEnzyme {
     
     if(Array.isArray(keys)){
       return keys.reduce(function(acc, key) {
-        acc[key] = props[key];
+        if(key in props)
+          acc[key] = props[key];
         return acc;
       }, {});
     }

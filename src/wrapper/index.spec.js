@@ -106,6 +106,10 @@ describe('Different enzyme render method', () => {
       it('providing property names in array should return only those props', () => {
         wrapper.props(['id', 'title']).should.deepEqual({ id: 'free', title: 'amazing' });
       });
+
+      it('providing property name that does not exist should return only props that exist', () => {
+        wrapper.props(['id', 'title', 'alt']).should.deepEqual({ id: 'free', title: 'amazing' });
+      });
     });
   });
 
