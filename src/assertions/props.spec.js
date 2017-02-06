@@ -39,9 +39,9 @@ describe('Should enzyme add props', () => {
         wrapper.should.not.have.props({'id': 'stuff'});
       });
 
-      it.skip('should error with a useful error message for missing "food = pizza" prop', () => {
+      it('should error with a useful error message for missing "food = pizza" prop', () => {
         (() => wrapper.should.have.props({food: 'pizza'}))
-        .should.throwError(/expected '(div|PropsFixture)' to have prop 'pizza'/);
+        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza' } to equal props {}/);
       });
 
       // it('should error with a useful error message for incorrect expected prop value', () => {

@@ -8,7 +8,12 @@ Assertion.add('props', function(expectedKeyValues){
   const wrapper = WrapperBuilder(this.obj),
   props = wrapper.props(Object.keys(expectedKeyValues));
 
-  expectedKeyValues.should.deepEqual(props);
+  this.params = {
+    actual: wrapper.name(),
+    operator: `to have ${formatProps(expectedKeyValues)} to equal ${formatProps(props)}`
+  };
+
+  should(expectedKeyValues).deepEqual(props, ' ');
 
   // if(arguments.length > 1 && typeof wrapper.prop(expectedKey) !== 'undefined') {
   //   this.params = {
@@ -24,3 +29,7 @@ Assertion.add('props', function(expectedKeyValues){
   //   should(assertKeyValue(wrapper.prop(expectedKey))).be.true(' ');
   // }
 }); 
+
+function formatProps(props){
+  return should.format(props).replace('Object', 'props');
+}
