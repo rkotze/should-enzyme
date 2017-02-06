@@ -3,7 +3,7 @@ import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React, { PropTypes } from 'react';
 
 const PropsFixture = ({ children, id, title, total }) => (
-  <div id={id}>content</div>
+  <div id={id} title={title} total={total}>content</div>
 );
 
 PropsFixture.propTypes = {
@@ -24,11 +24,15 @@ describe('Should enzyme add props', () => {
   eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
       before(() => {
-        wrapper = renderMethod(<PropsFixture id="content" />);
+        wrapper = renderMethod(<PropsFixture id="content" title="superfood" total={24} />);
       });
 
       it('should have prop "id" with value "content" in PropsFixture', () => {
         wrapper.should.have.props({'id': 'content'});
+      });
+
+      it('should have multiple props "id", "title" and "total" in PropsFixture', () => {
+        wrapper.should.have.props({'id': 'content', 'title': 'superfood', total: 24});
       });
 
       it('should NOT have prop "food = pizza" in PropsFixture', () => {
@@ -44,10 +48,15 @@ describe('Should enzyme add props', () => {
         .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza' } to equal props {}/);
       });
 
-      // it('should error with a useful error message for incorrect expected prop value', () => {
-      //   (() => wrapper.should.have.prop('id', 'stuff'))
-      //   .should.throwError(/expected '(div|PropsFixture)' prop 'id' to have value 'stuff', instead found 'content'/);
-      // });
+      it('should error with a useful error message for partial missing props of "food = pizza"', () => {
+        (() => wrapper.should.have.props({ food: 'pizza', id: 'content' }))
+        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza', id: 'content' } to equal props { id: 'content' }/);
+      });
+
+      it('should error with a useful error message for incorrect prop value "no content"', () => {
+        (() => wrapper.should.have.props({ 'id': 'no content' }))
+        .should.throwError(/expected '(div|PropsFixture)' to have props { id: 'no content' } to equal props { id: 'content' }/);
+      });
 
       // it('should error with a useful error message for incorrect prop', () => {
       //   (() => wrapper.should.have.prop('pizza', 'stuff'))
