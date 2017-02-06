@@ -58,10 +58,10 @@ describe('Should enzyme add props', () => {
         .should.throwError(/expected '(div|PropsFixture)' to have props { id: 'no content' } to equal props { id: 'content' }/);
       });
 
-      // it('should error with a useful error message for incorrect prop', () => {
-      //   (() => wrapper.should.have.prop('pizza', 'stuff'))
-      //   .should.throwError(/expected '(div|PropsFixture)' to have prop 'pizza'/);
-      // });
+      it('should error if no key value object is passed in', () => {
+        (() => wrapper.should.have.props())
+        .should.throwError(/An object needs to be passed in to assert props/);
+      });
     });
   });
 
