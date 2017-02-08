@@ -28,23 +28,23 @@ describe('Should enzyme add props', () => {
       });
 
       it('should have prop "id" with value "content" in PropsFixture', () => {
-        wrapper.should.have.props({'id': 'content'});
+        wrapper.should.have.props({ 'id': 'content' });
       });
 
       it('should have multiple props "id", "title" and "total" in PropsFixture', () => {
-        wrapper.should.have.props({'id': 'content', 'title': 'superfood', total: 24});
+        wrapper.should.have.props({ 'id': 'content', 'title': 'superfood', total: 24 });
       });
 
       it('should NOT have prop "food = pizza" in PropsFixture', () => {
-        wrapper.should.not.have.props({food: 'pizza'});
+        wrapper.should.not.have.props({ food: 'pizza' });
       });
 
       it('should have prop "id" but NOT with value "stuff" in PropsFixture', () => {
-        wrapper.should.not.have.props({'id': 'stuff'});
+        wrapper.should.not.have.props({ id: 'stuff' });
       });
 
       it('should error with a useful error message for missing "food = pizza" prop', () => {
-        (() => wrapper.should.have.props({food: 'pizza'}))
+        (() => wrapper.should.have.props({ food: 'pizza' }))
         .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza' } but found props {}/);
       });
 
