@@ -12,7 +12,7 @@ Assertion.add('props', function(expectedKeyValues){
 
   this.params = {
     actual: wrapper.name(),
-    operator: `to have ${formatProps(expectedKeyValues)} to equal ${formatProps(props)}`
+    operator: `to have ${formatProps(expectedKeyValues)} but found ${formatProps(props)}`
   };
 
   should(expectedKeyValues).deepEqual(props, ' ');

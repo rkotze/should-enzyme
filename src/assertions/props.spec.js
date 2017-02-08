@@ -45,17 +45,17 @@ describe('Should enzyme add props', () => {
 
       it('should error with a useful error message for missing "food = pizza" prop', () => {
         (() => wrapper.should.have.props({food: 'pizza'}))
-        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza' } to equal props {}/);
+        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza' } but found props {}/);
       });
 
       it('should error with a useful error message for partial missing props of "food = pizza"', () => {
         (() => wrapper.should.have.props({ food: 'pizza', id: 'content' }))
-        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza', id: 'content' } to equal props { id: 'content' }/);
+        .should.throwError(/expected '(div|PropsFixture)' to have props { food: 'pizza', id: 'content' } but found props { id: 'content' }/);
       });
 
       it('should error with a useful error message for incorrect prop value "no content"', () => {
         (() => wrapper.should.have.props({ 'id': 'no content' }))
-        .should.throwError(/expected '(div|PropsFixture)' to have props { id: 'no content' } to equal props { id: 'content' }/);
+        .should.throwError(/expected '(div|PropsFixture)' to have props { id: 'no content' } but found props { id: 'content' }/);
       });
 
       it('should error if no key value object is passed in', () => {
