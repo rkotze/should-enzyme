@@ -13,7 +13,7 @@ Assertion.add('prop', function(expectedKey, expectedValue){
       actual: wrapper.name(),
       operator: `prop '${expectedKey}' to have value '${expectedValue}', instead found '${wrapperProp}'`
     };
-    should(wrapperProp === expectedValue).be.true(' ');
+    should(assertKeyValue(wrapperProp, expectedValue)).be.true(' ');
   }else{
     this.params = {
       actual: wrapper.name(),

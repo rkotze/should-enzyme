@@ -1,8 +1,8 @@
-const assertKeyValue = (actualValue, expectedValue) => {
-  if(typeof expectedValue !== 'undefined')
+function assertKeyValue(actualValue, expectedValue) {
+  if(arguments.length > 1)
     return actualValue === expectedValue;
 
   return typeof actualValue !== 'undefined';
-};
+}
 
 export default assertKeyValue;
