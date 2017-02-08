@@ -13,9 +13,10 @@
   1. [`className(string)`](#classnamestring)
   1. [`contain(node)`](#containnode)
   1. [`containsText(string)`](#containstextstring)
-  1. [`exactClassNames(string}`](#exactclassnamesstring)
+  1. [`exactClassNames(string)`](#exactclassnamesstring)
   1. [`present()`](#present)
   1. [`prop(key, [value])`](#propkey-value)
+  1. [`props(object)`](#propsobject)
   1. [`state(key, [value])`](#statekey-value)
   1. [`text(string)`](#textstring)
   1. [`value(string)`](#valuestring)
@@ -232,11 +233,6 @@ const PropFixture = ({ children, id }) => (
   <div id={id}>salad</div>
 );
 
-PropFixture.propTypes = {
-  children: PropTypes.node,
-  id: PropTypes.string
-};
-
 const wrapper = mount(<PropFeature id="mango" />);
 
 wrapper.should.have.prop('id');
@@ -246,6 +242,33 @@ wrapper.should.have.prop('id', 'mango');
 wrapper.should.not.have.prop('id', 'banana');
 
 wrapper.should.not.have.prop('iDontExistProp', 'banana');
+```
+
+### `props(object)`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| no     | yes   | yes     |
+
+Check to see if wrapper has props and value. This uses shouldJS `deepEqual` assert.
+
+```js
+import React from 'react';
+import {mount, shallow} from 'enzyme';
+
+const PropsFixture = ({ id, title, total }) => (
+  <div id={id} title={title} total={total}>content</div>
+);
+
+const wrapper = mount(<PropsFixture id="content" title="superfood" total={24} />);
+
+wrapper.should.have.props({'id': 'content'});
+wrapper.should.have.props({'id': 'content', 'title': 'superfood', total: 24});
+
+wrapper.should.not.have.props({food: 'pizza'});
+wrapper.should.not.have.props({id: 'stuff'});
+
+wrapper.should.have.props(); // will error require object
 ```
 
 ### `state(key, [value])`
