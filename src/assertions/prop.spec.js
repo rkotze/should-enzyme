@@ -41,17 +41,22 @@ describe('Should enzyme add prop', () => {
         wrapper.should.not.have.prop('id', 'stuff');
       });
 
-      it('should error with a useful error message for missing pizza prop', () => {
+      it('should give a useful error message for missing pizza prop', () => {
         (() => wrapper.should.have.prop('pizza'))
         .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
       });
 
-      it('should error with a useful error message for incorrect expected prop value', () => {
+      it('should give a useful error message for "undefined" prop value', () => {
+        (() => wrapper.should.have.prop('id', undefined))
+        .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value 'undefined', instead found 'content'/);
+      });
+
+      it('should give a useful error message for incorrect expected prop value', () => {
         (() => wrapper.should.have.prop('id', 'stuff'))
         .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value 'stuff', instead found 'content'/);
       });
 
-      it('should error with a useful error message for incorrect prop', () => {
+      it('should give a useful error message for incorrect prop', () => {
         (() => wrapper.should.have.prop('pizza', 'stuff'))
         .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
       });

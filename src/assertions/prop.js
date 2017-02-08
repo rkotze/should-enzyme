@@ -5,19 +5,20 @@ import should from 'should';
 const Assertion = should.Assertion;
 
 Assertion.add('prop', function(expectedKey, expectedValue){
-  const wrapper = WrapperBuilder(this.obj);
+  const wrapper = WrapperBuilder(this.obj),
+  wrapperProp = wrapper.prop(expectedKey);
 
-  if(arguments.length > 1 && typeof wrapper.prop(expectedKey) !== 'undefined') {
+  if(arguments.length > 1 && typeof wrapperProp !== 'undefined') {
     this.params = {
       actual: wrapper.name(),
-      operator: `prop '${expectedKey}' to have value '${expectedValue}', instead found '${wrapper.prop(expectedKey)}'`
+      operator: `prop '${expectedKey}' to have value '${expectedValue}', instead found '${wrapperProp}'`
     };
-    should(assertKeyValue(wrapper.prop(expectedKey), expectedValue)).be.true(' ');
+    should(wrapperProp === expectedValue).be.true(' ');
   }else{
     this.params = {
       actual: wrapper.name(),
       operator: `to have prop '${expectedKey}'`
     };
-    should(assertKeyValue(wrapper.prop(expectedKey))).be.true(' ');
+    should(assertKeyValue(wrapperProp)).be.true(' ');
   }
 }); 
