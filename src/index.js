@@ -2,6 +2,7 @@ import './assertions/attr';
 import './assertions/checked';
 import './assertions/class-name';
 import './assertions/contain';
+import './assertions/data';
 import './assertions/exact-class-names';
 import './assertions/prop';
 import './assertions/props';
