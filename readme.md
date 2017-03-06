@@ -21,6 +21,7 @@
   1. [`state(key, [value])`](#statekey-value)
   1. [`text(string)`](#textstring)
   1. [`value(string)`](#valuestring)
+1. [Contribute](https://github.com/rkotze/should-enzyme/blob/master/CONTRIBUTING.md)
 
 ## Install
 
