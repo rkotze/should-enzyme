@@ -13,6 +13,7 @@
   1. [`className(string)`](#classnamestring)
   1. [`contain(node)`](#containnode)
   1. [`containsText(string)`](#containstextstring)
+  1. [`data(key, [value])`](#datakey-value)
   1. [`exactClassNames(string)`](#exactclassnamesstring)
   1. [`present()`](#present)
   1. [`prop(key, [value])`](#propkey-value)
@@ -165,6 +166,35 @@ cont wrapper = mount(<TextFixture />);
 
 wrapper.should.containsText('Content here');
 wrapper.should.not.containsText('pizza');
+```
+
+### `data(key, [value])`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Check to see if element has a data attribute and optionally check value.
+
+```js
+import {mount, render, shallow} from 'enzyme';
+import React, { PropTypes } from 'react';
+
+const DataFixture = ({ children, tr }) => (
+  <div data-tr={tr} data-id="special-id">content</div>
+);
+
+DataFixture.propTypes = {
+  children: PropTypes.node,
+  tr: PropTypes.string
+};
+
+const wrapper = mount(<DataFixture tr="enzyme" />);
+
+wrapper.should.have.data('tr');
+wrapper.should.have.data('tr', 'enzyme');
+wrapper.should.not.have.data('pizza');
+wrapper.should.not.have.data('tr', 'stuff');
 ```
 
 ### `exactClassNames(string)`
