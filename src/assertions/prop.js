@@ -11,9 +11,9 @@ Assertion.add('prop', function(expectedKey, expectedValue){
   if(arguments.length > 1 && typeof wrapperProp !== 'undefined') {
     this.params = {
       actual: wrapper.name(),
-      operator: `prop '${expectedKey}' to have value '${expectedValue}', instead found '${wrapperProp}'`
+      operator: `prop '${expectedKey}' to have value ${should.format(expectedValue)}, instead found ${should.format(wrapperProp)}`
     };
-    should(assertKeyValue(wrapperProp, expectedValue)).be.true(' ');
+    should(wrapperProp).be.eql(expectedValue, ' ');
   }else{
     this.params = {
       actual: wrapper.name(),
