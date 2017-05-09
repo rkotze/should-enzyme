@@ -260,17 +260,19 @@ Check to see if wrapper has prop and optionally check value.
 import React from 'react';
 import {mount, shallow} from 'enzyme';
 
-const PropFixture = ({ children, id }) => (
+const PropFixture = ({ children, id, myObj }) => (
   <div id={id}>salad</div>
 );
 
-const wrapper = mount(<PropFeature id="mango" />);
+const wrapper = mount(<PropFeature id="mango" myObj={{ foo: 'bar' }} />);
 
 wrapper.should.have.prop('id');
 wrapper.should.not.have.prop('iDontExistProp');
 
 wrapper.should.have.prop('id', 'mango');
 wrapper.should.not.have.prop('id', 'banana');
+// assert objects
+wrapper.should.have.prop('myObj', { foo: 'bar' });
 
 wrapper.should.not.have.prop('iDontExistProp', 'banana');
 ```
