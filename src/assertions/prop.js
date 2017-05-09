@@ -1,5 +1,4 @@
 import WrapperBuilder from '../wrapper';
-import assertKeyValue from '../assert-key-value';
 import should from 'should';
 
 const Assertion = should.Assertion;
@@ -19,6 +18,6 @@ Assertion.add('prop', function(expectedKey, expectedValue){
       actual: wrapper.name(),
       operator: `to have prop '${expectedKey}'`
     };
-    should(assertKeyValue(wrapperProp)).be.true(' ');
+    should(wrapperProp).not.be.undefined(' ');
   }
 }); 
