@@ -46,7 +46,7 @@
     "enzyme": "1.x || 2.x"
   },
   "dependencies": {
-    "react-element-to-jsx-string": "^11.0.1"
+    "react-element-to-jsx-string": "^5.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
