@@ -3,6 +3,7 @@ import './assertions/checked';
 import './assertions/class-name';
 import './assertions/contain';
 import './assertions/data';
+import './assertions/disabled';
 import './assertions/exact-class-names';
 import './assertions/prop';
 import './assertions/props';
