@@ -60,4 +60,8 @@ export default class StaticEnzyme extends BaseEnzyme {
     throw new Error('Enzyme static render method (Cheerio) does not support "contain" check');
   }
 
+  isDisabled(){
+    return this.element.is(':disabled');
+  }
+
 }

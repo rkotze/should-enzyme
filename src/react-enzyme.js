@@ -35,4 +35,8 @@ export default class ReactEnzyme extends BaseEnzyme {
     return this.element.value;
   }
 
+  isDisabled(){
+    return this.element.disabled;
+  }
+
 }
