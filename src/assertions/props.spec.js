@@ -1,6 +1,7 @@
 import './props';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const PropsFixture = ({ children, id, title, total }) => (
   <div id={id} title={title} total={total}>content</div>

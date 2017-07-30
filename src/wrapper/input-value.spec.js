@@ -24,7 +24,7 @@ const TextareaFixture = () => (
 );
 
 const NoInputFixture = () => (
-  <div>I don't have a value.</div>
+  <div>I don&apos;t have a value.</div>
 );
 
 describe('Form inputs', () => {

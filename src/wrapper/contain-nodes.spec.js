@@ -31,8 +31,8 @@ describe('When component is rendered', () => {
 
       it('should contain two apples called Jim and Bob', () => {
         containNodesWrapper.containNodes([
-          <Apple name="Jim" />,
-          <Apple name="Bob" />
+          <Apple name="Jim" key="1" />,
+          <Apple name="Bob" key="2" />
         ]).should.be.true();
       });
 

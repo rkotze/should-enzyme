@@ -1,6 +1,7 @@
 import './attr';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AttrFixture = ({ children, title }) => (
   <div title={title}>content</div>

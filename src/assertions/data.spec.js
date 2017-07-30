@@ -1,6 +1,7 @@
 import './data';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const DataFixture = ({ children, tr }) => (
   <div data-tr={tr} data-id="special-id">content</div>
