@@ -14,6 +14,7 @@
   1. [`contain(node)`](#containnode)
   1. [`containsText(string)`](#containstextstring)
   1. [`data(key, [value])`](#datakey-value)
+  1. [`disabled()`](#disabled)
   1. [`exactClassNames(string)`](#exactclassnamesstring)
   1. [`present()`](#present)
   1. [`prop(key, [value])`](#propkey-value)
@@ -196,6 +197,33 @@ wrapper.should.have.data('tr');
 wrapper.should.have.data('tr', 'enzyme');
 wrapper.should.not.have.data('pizza');
 wrapper.should.not.have.data('tr', 'stuff');
+```
+
+### `disabled()`
+
+| render | mount | shallow |
+| -------|-------|-------- |
+| yes    | yes   | yes     |
+
+Check to see if input fields are disabled.
+
+```js
+import React from 'react';
+import {mount, render, shallow} from 'enzyme';
+
+const DisabledFixture = () => (
+  <div>
+    <input id="coffee" type="text" value="coffee" />
+    <input id="tea" type="text" disabled value="tea" />
+  </div>
+);
+
+const wrapper = renderMethod(<DisabledFixture />);
+const coffee = wrapper.find('#coffee');
+const tea = wrapper.find('#tea');
+
+coffee.should.not.be.disabled();
+tea.should.be.disabled();
 ```
 
 ### `exactClassNames(string)`
