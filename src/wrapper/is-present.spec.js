@@ -28,7 +28,7 @@ describe("When component is rendered", () => {
 
     context(methodName, () => {
       it("should NOT be present", () => {
-        // enzyme 3 shows null React element as NOT present.
+        // enzyme 3/cheerio 1 shows null React element as NOT present.
         anyWrapper.isPresent().should.be.false();
       });
     });

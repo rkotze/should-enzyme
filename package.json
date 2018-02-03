@@ -1,12 +1,16 @@
 {
   "name": "should-enzyme",
-  "version": "1.4.0",
-  "description": "Useful functions for testing React components with Enzyme and Shouldjs",
+  "version": "2.0.0",
+  "description":
+    "Useful functions for testing React components with Enzyme and Shouldjs",
   "scripts": {
     "assert-imports": "node test-setup/assert-imports.js",
-    "test": "npm run assert-imports && npm run js-style && mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test:lazy": "mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test:w": "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test":
+      "npm run assert-imports && npm run js-style && mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:lazy":
+      "mocha -r should ./test-setup/jsdom.js -r should --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:w":
+      "npm run js-style && mocha -r should ./test-setup/jsdom.js -r should -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
     "compile": "babel -d lib/ src/ --ignore *spec.js",
@@ -41,9 +45,9 @@
   },
   "author": "Richard Kotze <richkotze@outlook.com>",
   "peerDependencies": {
-    "should": "8.x || 9.x || 10.x || 11.x",
-    "cheerio": "0.19.x || 0.20.x || 0.22.x",
-    "enzyme": "1.x || 2.x || 3.x",
+    "should": "^8 || ^9 || ^10 || ^11 ",
+    "cheerio": "^0.19 || ^0.20 || ^0.22 || ^1.0.0-0",
+    "enzyme": "^1.0.0 || ^2.0.0 || ^3.0.0",
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
     "react-dom": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
   },
@@ -77,8 +81,5 @@
   "bugs": {
     "url": "https://github.com/rkotze/should-enzyme/issues"
   },
-  "files": [
-    "lib/*",
-    "readme.md"
-  ]
+  "files": ["lib/*", "readme.md"]
 }

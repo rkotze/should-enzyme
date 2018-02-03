@@ -1,5 +1,4 @@
 import StaticEnzyme from "./static-enzyme";
-import { render } from "enzyme";
 import React from "react";
 
 const Fixture = () => <div className="testCssClass newClass">Content here</div>;

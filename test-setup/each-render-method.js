@@ -3,6 +3,10 @@ import Adapter from "enzyme-adapter-react-16";
 
 enzyme.configure({ adapter: new Adapter() });
 
+global.render = render;
+global.shallow = shallow;
+global.mount = mount;
+
 export function eachEnzymeMethod(methodNames, fn) {
   const methods = {
     shallow: shallow,
