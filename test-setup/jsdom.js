@@ -1,5 +1,13 @@
-var jsdom = require('jsdom');
+import jsdom from "jsdom";
+import enzyme, { shallow, mount, render } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+enzyme.configure({ adapter: new Adapter() });
+
+global.render = render;
+global.shallow = shallow;
+global.mount = mount;
+
+global.document = jsdom.jsdom("<!doctype html><html><body></body></html>");
 global.window = document.defaultView;
-global.navigator = {userAgent: 'node.js'};
+global.navigator = { userAgent: "node.js" };

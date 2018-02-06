@@ -30,6 +30,8 @@
 
 ## Setup
 
+Install [Enzyme JS](https://github.com/airbnb/enzyme#installation)
+
 ```js
 import "should";
 import "should-enzyme";
