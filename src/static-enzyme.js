@@ -1,5 +1,4 @@
-import BaseEnzyme from './base-enzyme';
-// import $ from 'cheerio';
+import BaseEnzyme from "./base-enzyme";
 
 export default class StaticEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
@@ -8,8 +7,8 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   get element() {
-    if(!this.__element) {
-      if(this.enzyme.first()['0'].type === 'root') {
+    if (!this.__element) {
+      if (this.enzyme.first()["0"].type === "root") {
         this.__element = this.enzyme.children().first();
       } else {
         this.__element = this.enzyme.first();
@@ -22,26 +21,31 @@ export default class StaticEnzyme extends BaseEnzyme {
   name() {
     const node = this.element.get(0);
 
-    if(node)
-      return node.name;
+    if (node) return node.name;
 
     return null;
   }
 
   prop() {
-    throw new Error('Enzyme static render method (Cheerio) does not support React props.');
+    throw new Error(
+      "Enzyme static render method (Cheerio) does not support React props."
+    );
   }
 
   props() {
-    throw new Error('Enzyme static render method (Cheerio) does not support React props.');
+    throw new Error(
+      "Enzyme static render method (Cheerio) does not support React props."
+    );
   }
 
   state() {
-    throw new Error('Enzyme static render method (Cheerio) does not support React state.');
+    throw new Error(
+      "Enzyme static render method (Cheerio) does not support React state."
+    );
   }
 
   classNames() {
-    return this.attr('class');
+    return this.attr("class");
   }
 
   hasClass(className) {
@@ -53,15 +57,16 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   checked() {
-    return this.element.is(':checked');
+    return this.element.is(":checked");
   }
 
-  containNodes(){
-    throw new Error('Enzyme static render method (Cheerio) does not support "contain" check');
+  containNodes() {
+    throw new Error(
+      'Enzyme static render method (Cheerio) does not support "contain" check'
+    );
   }
 
-  isDisabled(){
-    return this.element.is(':disabled');
+  isDisabled() {
+    return this.element.is(":disabled");
   }
-
 }

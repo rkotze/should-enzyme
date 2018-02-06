@@ -17,6 +17,9 @@ env:
 
 globals:
   should: true
+  render: true
+  shallow: true
+  mount: true
 
 parserOptions:
   sourceType: "module"

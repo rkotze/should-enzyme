@@ -1,5 +1,4 @@
-import { findDOMNode } from 'enzyme/build/react-compat';
-import BaseEnzyme from './base-enzyme';
+import BaseEnzyme from "./base-enzyme";
 
 export default class ReactEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
@@ -8,9 +7,8 @@ export default class ReactEnzyme extends BaseEnzyme {
   }
 
   get element() {
-    if(!this.__element)
-      this.__element = this.enzyme.single((n) => findDOMNode(n));
-    
+    if (!this.__element) this.__element = this.enzyme.getDOMNode();
+
     return this.__element;
   }
 
@@ -19,7 +17,7 @@ export default class ReactEnzyme extends BaseEnzyme {
   }
 
   hasClass(className) {
-    const classNameList = this.classNames().split(' ');
+    const classNameList = this.classNames().split(" ");
     return classNameList.indexOf(className) > -1;
   }
 
@@ -35,8 +33,7 @@ export default class ReactEnzyme extends BaseEnzyme {
     return this.element.value;
   }
 
-  isDisabled(){
+  isDisabled() {
     return this.element.disabled;
   }
-
 }
