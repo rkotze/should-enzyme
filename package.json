@@ -1,16 +1,12 @@
 {
   "name": "should-enzyme",
   "version": "2.0.0",
-  "description":
-    "Useful functions for testing React components with Enzyme and Shouldjs",
+  "description": "Useful functions for testing React components with Enzyme and Shouldjs",
   "scripts": {
     "assert-imports": "node test-setup/assert-imports.js",
-    "test":
-      "npm run assert-imports && npm run js-style && mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test:lazy":
-      "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
-    "test:w":
-      "npm run js-style && mocha -r should ./test-setup/jsdom.js -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test": "npm run assert-imports && npm run js-style && mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:lazy": "mocha -r should ./test-setup/jsdom.js --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
+    "test:w": "npm run js-style && mocha -r should ./test-setup/jsdom.js -w --compilers js:babel-core/register src/*spec.js src/**/*spec.js",
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
     "compile": "babel -d lib/ src/ --ignore *spec.js",
@@ -65,7 +61,7 @@
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.6.1",
-    "jsdom": "^9.12.0",
+    "jsdom": "^11.6.2",
     "mocha": "^5.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -77,5 +73,8 @@
   "bugs": {
     "url": "https://github.com/rkotze/should-enzyme/issues"
   },
-  "files": ["lib/*", "readme.md"]
+  "files": [
+    "lib/*",
+    "readme.md"
+  ]
 }
