@@ -10,7 +10,8 @@
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
     "compile": "babel -d lib/ src/ --ignore *spec.js",
-    "prepare": "npm run test && npm run compile"
+    "prepublishOnly": "npm run test",
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
