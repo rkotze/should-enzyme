@@ -44,7 +44,7 @@
     "enzyme": "^1.0.0 || ^2.0.0 || ^3.0.0"
   },
   "dependencies": {
-    "react-element-to-jsx-string": "^13.1.0"
+    "react-element-to-jsx-string": "^13.2.0"
   },
   "devDependencies": {
     "ajv": "^5.5.2",
@@ -64,9 +64,9 @@
     "eslint-plugin-react": "^7.6.1",
     "jsdom": "^11.10.0",
     "mocha": "^5.0.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "should": "^13.2.1",
     "should-sinon": "0.0.5",
     "sinon": "^1.17.7"
