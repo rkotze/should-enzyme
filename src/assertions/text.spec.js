@@ -8,10 +8,6 @@ const TextFixture = () => (
 );
 
 describe('Should enzyme add containsText', () => {
-  const shouldEnzyme = should;
-  it('should have new method containText', () => {
-    shouldEnzyme.should.have.property('containsText');
-  });
 
   [shallow, mount, render].forEach(method => {
     context(method.name, () => {
@@ -29,7 +25,7 @@ describe('Should enzyme add containsText', () => {
 
       it(`assert should fail to see useful error message`, () => {
         (() => wrapper.should.containsText('pizza'))
-        .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
+          .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
       });
 
     });
@@ -37,10 +33,6 @@ describe('Should enzyme add containsText', () => {
 });
 
 describe('Should enzyme add text', () => {
-  const shouldEnzyme = should;
-  it('should have new method text', () => {
-    shouldEnzyme.should.have.property('text');
-  });
 
   [shallow, mount, render].forEach(method => {
     context(method.name, () => {
@@ -58,7 +50,7 @@ describe('Should enzyme add text', () => {
 
       it(`assert should fail when no exact text and show error message`, () => {
         (() => wrapper.should.text('pizza'))
-        .should.throwError(/expected '(div|TextFixture)' to have exact text of 'pizza' but found 'Content here. More content'/);
+          .should.throwError(/expected '(div|TextFixture)' to have exact text of 'pizza' but found 'Content here. More content'/);
       });
 
     });

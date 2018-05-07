@@ -12,18 +12,13 @@ const Apple = (props) => {
 
 const ContainNodesFixture = () => {
   return (<div>
-      <Apple name="Jim" />
-      <Apple name="Bob" />
-    </div>);
+    <Apple name="Jim" />
+    <Apple name="Bob" />
+  </div>);
 };
 
 describe('Contains a component inside of a parent', () => {
-  const shouldEnzyme = should;
   let wrapper;
-
-  it('should have new method contain', () => {
-    shouldEnzyme.should.have.property('contain');
-  });
 
   eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -41,12 +36,12 @@ describe('Contains a component inside of a parent', () => {
 
       it('should see useful error message when Banana is expected but not found', () => {
         (() => wrapper.should.be.contain(<Banana />))
-        .should.throwError(/^expected '(div|ContainNodesFixture)' to contain a '<Banana \/>'/);
+          .should.throwError(/^expected '(div|ContainNodesFixture)' to contain a '<Banana \/>'/);
       });
 
       it('should see useful error message when Apple name Bob is not expected but found', () => {
         (() => wrapper.should.not.contain(<Apple name="Bob" />))
-        .should.throwError(/^expected '(div|ContainNodesFixture)' not to contain a '<Apple name="Bob" \/>'/);
+          .should.throwError(/^expected '(div|ContainNodesFixture)' not to contain a '<Apple name="Bob" \/>'/);
       });
 
     });
@@ -60,7 +55,7 @@ describe('Contains a component inside of a parent', () => {
 
       it('should throw an error when using contains', () => {
         (() => wrapper.should.contain(<Apple name="Bob" />))
-        .should.throwError();
+          .should.throwError();
       });
     });
   });

@@ -24,12 +24,7 @@ const expectedFooMagic = {
 };
 
 describe('Should enzyme add prop', () => {
-  const shouldEnzyme = should;
   let wrapper;
-
-  it('should have new method prop', () => {
-    shouldEnzyme.should.have.property('prop');
-  });
 
   eachEnzymeMethod(['shallow', 'mount'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -59,27 +54,27 @@ describe('Should enzyme add prop', () => {
 
       it('should give a useful error message for missing pizza prop', () => {
         (() => wrapper.should.have.prop('pizza'))
-        .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
+          .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
       });
 
       it('should give a useful error message for "undefined" prop value', () => {
         (() => wrapper.should.have.prop('id', undefined))
-        .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value undefined, instead found 'content'/);
+          .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value undefined, instead found 'content'/);
       });
 
       it('should give a useful error message for incorrect expected prop value', () => {
         (() => wrapper.should.have.prop('id', 'stuff'))
-        .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value 'stuff', instead found 'content'/);
+          .should.throwError(/expected '(div|PropFixture)' prop 'id' to have value 'stuff', instead found 'content'/);
       });
 
       it('should give a useful error message for incorrect expected prop object value', () => {
         (() => wrapper.should.have.prop('myObj', { foo: 'bazz' }))
-        .should.throwError(/expected '(div|PropFixture)' prop 'myObj' to have value Object { foo: 'bazz' }, instead found Object { foo: 'bar', baz: Object { f: 'uzz' } }/);
+          .should.throwError(/expected '(div|PropFixture)' prop 'myObj' to have value Object { foo: 'bazz' }, instead found Object { foo: 'bar', baz: Object { f: 'uzz' } }/);
       });
 
       it('should give a useful error message for incorrect prop', () => {
         (() => wrapper.should.have.prop('pizza', 'stuff'))
-        .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
+          .should.throwError(/expected '(div|PropFixture)' to have prop 'pizza'/);
       });
     });
   });
@@ -92,7 +87,7 @@ describe('Should enzyme add prop', () => {
 
       it('should throw error when using prop on enzyme render method', () => {
         (() => wrapper.should.have.prop('id'))
-        .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
+          .should.throwError('Enzyme static render method (Cheerio) does not support React props.');
       });
     });
   });

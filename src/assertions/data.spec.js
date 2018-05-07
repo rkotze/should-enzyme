@@ -13,12 +13,7 @@ DataFixture.propTypes = {
 };
 
 describe('Should enzyme add data feature', () => {
-  const shouldEnzyme = should;
   let wrapper;
-
-  it('should have new method data', () => {
-    shouldEnzyme.should.have.property('data');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -44,17 +39,17 @@ describe('Should enzyme add data feature', () => {
 
       it('should see useful error message for missing pizza data attribute', () => {
         (() => wrapper.should.have.data('pizza'))
-        .should.throwError(/expected '(div|DataFixture)' to have attribute 'data-pizza'/);
+          .should.throwError(/expected '(div|DataFixture)' to have attribute 'data-pizza'/);
       });
 
       it('should see useful error message for incorrect expected data attribute value', () => {
         (() => wrapper.should.have.data('tr', 'stuff'))
-        .should.throwError(/expected '(div|DataFixture)' attribute 'data-tr' to have value 'stuff', instead found 'enzyme'/);
+          .should.throwError(/expected '(div|DataFixture)' attribute 'data-tr' to have value 'stuff', instead found 'enzyme'/);
       });
 
       it('should see useful error message for incorrect data attribute', () => {
         (() => wrapper.should.have.data('pizza', 'stuff'))
-        .should.throwError(/expected '(div|DataFixture)' to have attribute 'data-pizza'/);
+          .should.throwError(/expected '(div|DataFixture)' to have attribute 'data-pizza'/);
       });
     });
   });

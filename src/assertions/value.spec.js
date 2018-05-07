@@ -16,10 +16,6 @@ const FormInputsFixture = () => (
 );
 
 describe('Should enzyme have a way to assert input values', () => {
-  const shouldEnzyme = should;
-  it('should have new method value', () => {
-    shouldEnzyme.should.have.property('value');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -55,17 +51,17 @@ describe('Should enzyme have a way to assert input values', () => {
 
       it(`assert should fail to see useful error message for select element`, () => {
         (() => wrapper.find('select').should.have.value('salad'))
-        .should.throwError(/expected 'select' to have value 'salad' but found 'pizza'/);
+          .should.throwError(/expected 'select' to have value 'salad' but found 'pizza'/);
       });
 
       it(`assert should fail to see useful error message for input element`, () => {
         (() => wrapper.find('input').should.have.value('pizza'))
-        .should.throwError(/expected 'input' to have value 'pizza' but found 'coffee'/);
+          .should.throwError(/expected 'input' to have value 'pizza' but found 'coffee'/);
       });
 
       it(`assert should fail when trying to get value when no value attribute`, () => {
         (() => wrapper.find('#failSelect').should.have.value('pizza'))
-        .should.throwError(/element 'div' does not have a value/);
+          .should.throwError(/element 'div' does not have a value/);
       });
 
     });

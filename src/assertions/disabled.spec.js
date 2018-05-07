@@ -10,12 +10,7 @@ const DisabledFixture = () => (
 );
 
 describe('Should enzyme add disabled feature', () => {
-  const shouldEnzyme = should;
   let wrapper, disabled, notDisabled;
-
-  it('should have new method disabled', () => {
-    shouldEnzyme.should.have.property('disabled');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -35,12 +30,12 @@ describe('Should enzyme add disabled feature', () => {
 
       it('should see useful error message for input expected to be disabled', () => {
         (() => notDisabled.should.be.disabled())
-        .should.throwError(/expected 'input' type 'text' to be 'disabled' but is 'enabled'/);
+          .should.throwError(/expected 'input' type 'text' to be 'disabled' but is 'enabled'/);
       });
 
       it('should see useful error message for input not expected to be disabled.', () => {
         (() => disabled.should.not.be.disabled())
-        .should.throwError(/expected 'input' type 'text' to be 'endabled' but is 'disabled'/);
+          .should.throwError(/expected 'input' type 'text' to be 'endabled' but is 'disabled'/);
       });
     });
   });

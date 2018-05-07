@@ -7,11 +7,6 @@ const ClassNamesFixture = () => (
 );
 
 describe('Should enzyme add check multiple class names', () => {
-  const shouldEnzyme = should;
-
-  it('should have new method classNames', () => {
-    shouldEnzyme.should.have.property('exactClassNames');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -31,12 +26,12 @@ describe('Should enzyme add check multiple class names', () => {
 
       it('assert should fail as "pizza" is not in the list of CSS classes', () => {
         (() => wrapper.should.have.exactClassNames('special buffalo chicken'))
-        .should.throwError(/expected '(div|ClassNamesFixture)' to have classNames 'special buffalo chicken' but found 'special buffalo chicken burger'/);
+          .should.throwError(/expected '(div|ClassNamesFixture)' to have classNames 'special buffalo chicken' but found 'special buffalo chicken burger'/);
       });
 
       it('assert should fail as "buffalo" is in the list of CSS classes', () => {
         (() => wrapper.should.not.have.exactClassNames('special buffalo chicken burger'))
-        .should.throwError(/expected '(div|ClassNamesFixture)' not to have classNames 'special buffalo chicken burger' but found 'special buffalo chicken burger'/);
+          .should.throwError(/expected '(div|ClassNamesFixture)' not to have classNames 'special buffalo chicken burger' but found 'special buffalo chicken burger'/);
       });
     });
   });

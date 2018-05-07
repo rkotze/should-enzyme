@@ -10,12 +10,7 @@ const PresentFixture = () => (
 );
 
 describe('Present: component added', () => {
-  const shouldEnzyme = should;
   let wrapper, burgers, fries;
-
-  it('should have new method present', () => {
-    shouldEnzyme.should.have.property('present');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -35,12 +30,12 @@ describe('Present: component added', () => {
 
       it('should see useful error message when wrapper is expected to be present', () => {
         (() => fries.should.be.present())
-        .should.throwError(/^expected 'component' to be present/);
+          .should.throwError(/^expected 'component' to be present/);
       });
 
       it('should see useful error message when wrapper is expected NOT to be there', () => {
         (() => burgers.should.not.present())
-        .should.throwError(/^expected 'component' not to be present/);
+          .should.throwError(/^expected 'component' not to be present/);
       });
     });
   });

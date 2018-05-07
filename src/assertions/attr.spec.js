@@ -13,12 +13,7 @@ AttrFixture.propTypes = {
 };
 
 describe('Should enzyme add attr feature', () => {
-  const shouldEnzyme = should;
   let wrapper;
-
-  it('should have new method attr', () => {
-    shouldEnzyme.should.have.property('attr');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -44,17 +39,17 @@ describe('Should enzyme add attr feature', () => {
 
       it('should see useful error message for missing pizza attribute', () => {
         (() => wrapper.should.have.attr('pizza'))
-        .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
+          .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
       });
 
       it('should see useful error message for incorrect expected attribute value', () => {
         (() => wrapper.should.have.attr('title', 'stuff'))
-        .should.throwError(/expected '(div|AttrFixture)' attribute 'title' to have value 'stuff', instead found 'enzyme'/);
+          .should.throwError(/expected '(div|AttrFixture)' attribute 'title' to have value 'stuff', instead found 'enzyme'/);
       });
 
       it('should see useful error message for incorrect attribute', () => {
         (() => wrapper.should.have.attr('pizza', 'stuff'))
-        .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
+          .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
       });
     });
   });

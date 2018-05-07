@@ -7,11 +7,6 @@ const ClassNameFixture = () => (
 );
 
 describe('Should enzyme add check hasClass', () => {
-  const shouldEnzyme = should;
-
-  it('should have new method className', () => {
-    shouldEnzyme.should.have.property('className');
-  });
 
   eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
     context(methodName, () => {
@@ -31,7 +26,7 @@ describe('Should enzyme add check hasClass', () => {
 
       it('assert should fail to see useful error message', () => {
         (() => wrapper.should.have.className('pizza'))
-        .should.throwError(/expected '(div|ClassNameFixture)' to have className 'pizza' but found 'special burger'/);
+          .should.throwError(/expected '(div|ClassNameFixture)' to have className 'pizza' but found 'special burger'/);
       });
     });
   });
