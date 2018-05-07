@@ -16,40 +16,40 @@ const SelectFixture = () => (
   </select>
 );
 
-// In a world where we have value and defaultValue, 
-// it is ambiguous what role children play. 
+// In a world where we have value and defaultValue,
+// it is ambiguous what role children play.
 // For this reason, you should not use children when setting <textarea> value
 const TextareaFixture = () => (
   <textarea name="fruit" value="Hands or bunch of bananas?" />
 );
 
-const NoInputFixture = () => (
-  <div>I don&apos;t have a value.</div>
-);
+const NoInputFixture = () => <div>I don&apos;t have a value.</div>;
 
 describe('Form inputs', () => {
-  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
+  eachEnzymeMethod(
+    ['shallow', 'mount', 'render'],
+    (renderMethod, methodName) => {
+      context(methodName, () => {
+        it('should get value of "coffee"', () => {
+          const input = WrapperBuilder(renderMethod(<InputsFixture />));
+          input.value().should.equal('coffee');
+        });
 
-    context(methodName, () => {
-      it('should get value of "coffee"', () => {
-        const input = WrapperBuilder(renderMethod(<InputsFixture />));
-        input.value().should.equal('coffee');
-      });
+        it('should get selected value of "pizza" in select list', () => {
+          const select = WrapperBuilder(renderMethod(<SelectFixture />));
+          select.value().should.equal('pizza');
+        });
 
-      it('should get selected value of "pizza" in select list', () => {
-        const select = WrapperBuilder(renderMethod(<SelectFixture />));
-        select.value().should.equal('pizza');
-      });
+        it('should get textarea value "Hands or bunch of bananas?"', () => {
+          const textarea = WrapperBuilder(renderMethod(<TextareaFixture />));
+          textarea.value().should.equal('Hands or bunch of bananas?');
+        });
 
-      it('should get textarea value "Hands or bunch of bananas?"', () => {
-        const textarea = WrapperBuilder(renderMethod(<TextareaFixture />));
-        textarea.value().should.equal('Hands or bunch of bananas?');
+        it('should return "undefined" if value attribute', () => {
+          const noInput = WrapperBuilder(renderMethod(<NoInputFixture />));
+          (noInput.value() === undefined).should.be.true();
+        });
       });
-
-      it('should return "undefined" if value attribute', () => {
-        const noInput = WrapperBuilder(renderMethod(<NoInputFixture />));
-        (noInput.value() === undefined).should.be.true();
-      });
-    });
-  });
+    }
+  );
 });

@@ -3,9 +3,7 @@ import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AttrFixture = ({ children, title }) => (
-  <div title={title}>content</div>
-);
+const AttrFixture = ({ children, title }) => <div title={title}>content</div>;
 
 AttrFixture.propTypes = {
   children: PropTypes.node,
@@ -15,42 +13,48 @@ AttrFixture.propTypes = {
 describe('Should enzyme add attr feature', () => {
   let wrapper;
 
-  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
-    context(methodName, () => {
-      before(() => {
-        wrapper = renderMethod(<AttrFixture title="enzyme" />);
-      });
+  eachEnzymeMethod(
+    ['shallow', 'mount', 'render'],
+    (renderMethod, methodName) => {
+      context(methodName, () => {
+        before(() => {
+          wrapper = renderMethod(<AttrFixture title="enzyme" />);
+        });
 
-      it('should have attribute "title"', () => {
-        wrapper.should.have.attr('title');
-      });
+        it('should have attribute "title"', () => {
+          wrapper.should.have.attr('title');
+        });
 
-      it('should have attribute "title" with value "enzyme"', () => {
-        wrapper.should.have.attr('title', 'enzyme');
-      });
+        it('should have attribute "title" with value "enzyme"', () => {
+          wrapper.should.have.attr('title', 'enzyme');
+        });
 
-      it('should NOT have attribute "pizza"', () => {
-        wrapper.should.not.have.attr('pizza');
-      });
+        it('should NOT have attribute "pizza"', () => {
+          wrapper.should.not.have.attr('pizza');
+        });
 
-      it('should have attribute "title" but NOT with value "stuff"', () => {
-        wrapper.should.not.have.attr('title', 'stuff');
-      });
+        it('should have attribute "title" but NOT with value "stuff"', () => {
+          wrapper.should.not.have.attr('title', 'stuff');
+        });
 
-      it('should see useful error message for missing pizza attribute', () => {
-        (() => wrapper.should.have.attr('pizza'))
-          .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
-      });
+        it('should see useful error message for missing pizza attribute', () => {
+          (() => wrapper.should.have.attr('pizza')).should.throwError(
+            /expected '(div|AttrFixture)' to have attribute 'pizza'/
+          );
+        });
 
-      it('should see useful error message for incorrect expected attribute value', () => {
-        (() => wrapper.should.have.attr('title', 'stuff'))
-          .should.throwError(/expected '(div|AttrFixture)' attribute 'title' to have value 'stuff', instead found 'enzyme'/);
-      });
+        it('should see useful error message for incorrect expected attribute value', () => {
+          (() => wrapper.should.have.attr('title', 'stuff')).should.throwError(
+            /expected '(div|AttrFixture)' attribute 'title' to have value 'stuff', instead found 'enzyme'/
+          );
+        });
 
-      it('should see useful error message for incorrect attribute', () => {
-        (() => wrapper.should.have.attr('pizza', 'stuff'))
-          .should.throwError(/expected '(div|AttrFixture)' to have attribute 'pizza'/);
+        it('should see useful error message for incorrect attribute', () => {
+          (() => wrapper.should.have.attr('pizza', 'stuff')).should.throwError(
+            /expected '(div|AttrFixture)' to have attribute 'pizza'/
+          );
+        });
       });
-    });
-  });
+    }
+  );
 });

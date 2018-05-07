@@ -4,7 +4,7 @@ import jsxString from 'react-element-to-jsx-string';
 
 const Assertion = should.Assertion;
 
-Assertion.add('contain', function(node){
+Assertion.add('contain', function(node) {
   const wrapper = WrapperBuilder(this.obj);
 
   this.params = {

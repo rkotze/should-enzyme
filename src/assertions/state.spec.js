@@ -11,11 +11,7 @@ class StateFixture extends Component {
   }
 
   render() {
-    return (
-      <div id="best-mangos">
-        {this.state.bestFruit}
-      </div>
-    );
+    return <div id="best-mangos">{this.state.bestFruit}</div>;
   }
 }
 
@@ -45,25 +41,30 @@ describe('Should enzyme add state', () => {
       });
 
       it('should give a useful error message for missing salad state', () => {
-        (() => wrapper.should.have.state('salad'))
-          .should.throwError(/expected '(div|StateFixture)' to have state 'salad' property/);
+        (() => wrapper.should.have.state('salad')).should.throwError(
+          /expected '(div|StateFixture)' to have state 'salad' property/
+        );
       });
 
       it('should give a useful error message for "undefined" state value', () => {
-        (() => wrapper.should.have.state('bestFruit', undefined))
-          .should.throwError(/expected '(div|StateFixture)' state 'bestFruit' property to have value 'undefined', instead found 'mango'/);
+        (() =>
+          wrapper.should.have.state('bestFruit', undefined)).should.throwError(
+          /expected '(div|StateFixture)' state 'bestFruit' property to have value 'undefined', instead found 'mango'/
+        );
       });
 
       it('should give a useful error message for incorrect expected state value', () => {
-        (() => wrapper.should.have.state('bestFruit', 'banana'))
-          .should.throwError(/expected '(div|StateFixture)' state 'bestFruit' property to have value 'banana', instead found 'mango'/);
+        (() =>
+          wrapper.should.have.state('bestFruit', 'banana')).should.throwError(
+          /expected '(div|StateFixture)' state 'bestFruit' property to have value 'banana', instead found 'mango'/
+        );
       });
 
       it('should give a useful error message for incorrect state', () => {
-        (() => wrapper.should.have.state('salad', 'stuff'))
-          .should.throwError(/expected '(div|StateFixture)' to have state 'salad' property/);
+        (() => wrapper.should.have.state('salad', 'stuff')).should.throwError(
+          /expected '(div|StateFixture)' to have state 'salad' property/
+        );
       });
-
     });
   });
 
@@ -74,8 +75,9 @@ describe('Should enzyme add state', () => {
       });
 
       it('should throw error when using state on enzyme render method', () => {
-        (() => wrapper.should.have.state('bestFruit'))
-          .should.throwError('Enzyme static render method (Cheerio) does not support React state.');
+        (() => wrapper.should.have.state('bestFruit')).should.throwError(
+          'Enzyme static render method (Cheerio) does not support React state.'
+        );
       });
     });
   });

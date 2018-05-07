@@ -5,27 +5,25 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { assertionBuilder } from './assertion-builder';
 
-const Fixture = () => (
-  <div>Content here</div>
-);
+const Fixture = () => <div>Content here</div>;
 
 describe('Assertion builder', () => {
   let assertionAddSpy,
-  wrapperBuilderSpy,
-  wrapperProps,
-  assertFnSpy,
-  assertMessageFnSpy,
-  renderDom;
+    wrapperBuilderSpy,
+    wrapperProps,
+    assertFnSpy,
+    assertMessageFnSpy,
+    renderDom;
 
   let assertFn = function() {
-    return this.muse.apply(this, arguments);
-  },
-  assertMessageFn = function(expected) {
-    return `expected '${this.name()}' to have ${expected} but got ${this.classNames()}`;
-  };
+      return this.muse.apply(this, arguments);
+    },
+    assertMessageFn = function(expected) {
+      return `expected '${this.name()}' to have ${expected} but got ${this.classNames()}`;
+    };
 
   before(() => {
-    wrapperProps = { 
+    wrapperProps = {
       name: sinon.stub().returns('div'),
       muse: sinon.stub().returns(true),
       classNames: sinon.stub().returns('css classes')
@@ -35,7 +33,12 @@ describe('Assertion builder', () => {
     assertFnSpy = sinon.spy(assertFn);
     assertMessageFnSpy = sinon.spy(assertMessageFn);
 
-    assertionBuilder('muse', assertFnSpy, assertMessageFnSpy, wrapperBuilderSpy);
+    assertionBuilder(
+      'muse',
+      assertFnSpy,
+      assertMessageFnSpy,
+      wrapperBuilderSpy
+    );
     renderDom = shallow(<Fixture />);
   });
 
@@ -88,5 +91,4 @@ describe('Assertion builder', () => {
     wrapperProps.name.should.be.calledOnce();
     wrapperProps.classNames.should.be.calledOnce();
   });
-
 });

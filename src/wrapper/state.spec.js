@@ -3,19 +3,15 @@ import React, { Component } from 'react';
 import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 
 class StateFixture extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       bestFruit: 'mango'
     };
   }
 
-  render(){
-    return (
-        <div id="best-mangos">
-          {this.state.bestFruit}
-        </div>
-      );
+  render() {
+    return <div id="best-mangos">{this.state.bestFruit}</div>;
   }
 }
 
@@ -50,10 +46,10 @@ describe('Get state from component', () => {
     context(methodName, () => {
       it(`should throw error using state method and Enzyme render`, () => {
         stateWrapper.should.have.property('state');
-        (() => stateWrapper.state('bestFruit'))
-        .should.throwError('Enzyme static render method (Cheerio) does not support React state.');
+        (() => stateWrapper.state('bestFruit')).should.throwError(
+          'Enzyme static render method (Cheerio) does not support React state.'
+        );
       });
     });
   });
-
 });

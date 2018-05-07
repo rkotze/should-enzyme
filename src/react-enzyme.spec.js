@@ -2,12 +2,9 @@ import ReactEnzyme from './react-enzyme';
 import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 
-const Fixture = () => (
-  <div className="testCssClass newClass">Content here</div>
-);
+const Fixture = () => <div className="testCssClass newClass">Content here</div>;
 
 describe('React enzyme wrapper', () => {
-
   let wrapper, reactWrapper;
 
   before(() => {
@@ -24,5 +21,4 @@ describe('React enzyme wrapper', () => {
     reactWrapper.should.have.property('element');
     // reactWrapper.element.type.should.be.instanceOf(ReactWrapper);
   });
-
 });

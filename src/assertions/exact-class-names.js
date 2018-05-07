@@ -3,9 +3,9 @@ import should from 'should';
 
 const Assertion = should.Assertion;
 
-Assertion.add('exactClassNames', function(expected){
+Assertion.add('exactClassNames', function(expected) {
   const wrapper = WrapperBuilder(this.obj),
-  actualClasses = wrapper.classNames();
+    actualClasses = wrapper.classNames();
 
   this.params = {
     actual: wrapper.name(),

@@ -6,26 +6,27 @@ const CheckedFixture = () => (
   <input type="checkbox" defaultChecked value="coffee" />
 );
 
-const NotCheckedFixture = () => (
-  <input type="checkbox" value="coffee" />
-);
+const NotCheckedFixture = () => <input type="checkbox" value="coffee" />;
 
 describe('Checkbox', () => {
-  eachEnzymeMethod(['shallow', 'mount', 'render'], (renderMethod, methodName) => {
-    let checkedInput, notCheckedInput;
-    before(() => {
-      checkedInput = WrapperBuilder(renderMethod(<CheckedFixture />));
-      notCheckedInput = WrapperBuilder(renderMethod(<NotCheckedFixture />));
-    });
-
-    context(methodName, () => {
-      it('should be checked', () => {
-        checkedInput.checked().should.be.true();
+  eachEnzymeMethod(
+    ['shallow', 'mount', 'render'],
+    (renderMethod, methodName) => {
+      let checkedInput, notCheckedInput;
+      before(() => {
+        checkedInput = WrapperBuilder(renderMethod(<CheckedFixture />));
+        notCheckedInput = WrapperBuilder(renderMethod(<NotCheckedFixture />));
       });
 
-      it('should NOT be checked', () => {
-        notCheckedInput.checked().should.be.false();
+      context(methodName, () => {
+        it('should be checked', () => {
+          checkedInput.checked().should.be.true();
+        });
+
+        it('should NOT be checked', () => {
+          notCheckedInput.checked().should.be.false();
+        });
       });
-    });
-  });
+    }
+  );
 });

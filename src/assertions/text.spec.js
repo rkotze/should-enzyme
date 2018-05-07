@@ -8,12 +8,10 @@ const TextFixture = () => (
 );
 
 describe('Should enzyme add containsText', () => {
-
   [shallow, mount, render].forEach(method => {
     context(method.name, () => {
       before(() => {
         wrapper = method(<TextFixture />);
-
       });
       it(`should contain text TextFixture`, () => {
         wrapper.should.containsText('Content here');
@@ -24,16 +22,15 @@ describe('Should enzyme add containsText', () => {
       });
 
       it(`assert should fail to see useful error message`, () => {
-        (() => wrapper.should.containsText('pizza'))
-          .should.throwError(/expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/);
+        (() => wrapper.should.containsText('pizza')).should.throwError(
+          /expected '(div|TextFixture)' to contain text 'pizza' but found 'Content here. More content'/
+        );
       });
-
     });
   });
 });
 
 describe('Should enzyme add text', () => {
-
   [shallow, mount, render].forEach(method => {
     context(method.name, () => {
       before(() => {
@@ -49,10 +46,10 @@ describe('Should enzyme add text', () => {
       });
 
       it(`assert should fail when no exact text and show error message`, () => {
-        (() => wrapper.should.text('pizza'))
-          .should.throwError(/expected '(div|TextFixture)' to have exact text of 'pizza' but found 'Content here. More content'/);
+        (() => wrapper.should.text('pizza')).should.throwError(
+          /expected '(div|TextFixture)' to have exact text of 'pizza' but found 'Content here. More content'/
+        );
       });
-
     });
   });
 });

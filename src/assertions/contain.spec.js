@@ -3,18 +3,20 @@ import { eachEnzymeMethod } from '../../test-setup/each-render-method';
 import React from 'react';
 
 const Banana = () => {
-  return (<div>Banana</div>);
+  return <div>Banana</div>;
 };
 
-const Apple = (props) => {
-  return (<div>Apple</div>);
+const Apple = props => {
+  return <div>Apple</div>;
 };
 
 const ContainNodesFixture = () => {
-  return (<div>
-    <Apple name="Jim" />
-    <Apple name="Bob" />
-  </div>);
+  return (
+    <div>
+      <Apple name="Jim" />
+      <Apple name="Bob" />
+    </div>
+  );
 };
 
 describe('Contains a component inside of a parent', () => {
@@ -35,15 +37,17 @@ describe('Contains a component inside of a parent', () => {
       });
 
       it('should see useful error message when Banana is expected but not found', () => {
-        (() => wrapper.should.be.contain(<Banana />))
-          .should.throwError(/^expected '(div|ContainNodesFixture)' to contain a '<Banana \/>'/);
+        (() => wrapper.should.be.contain(<Banana />)).should.throwError(
+          /^expected '(div|ContainNodesFixture)' to contain a '<Banana \/>'/
+        );
       });
 
       it('should see useful error message when Apple name Bob is not expected but found', () => {
-        (() => wrapper.should.not.contain(<Apple name="Bob" />))
-          .should.throwError(/^expected '(div|ContainNodesFixture)' not to contain a '<Apple name="Bob" \/>'/);
+        (() =>
+          wrapper.should.not.contain(<Apple name="Bob" />)).should.throwError(
+          /^expected '(div|ContainNodesFixture)' not to contain a '<Apple name="Bob" \/>'/
+        );
       });
-
     });
   });
 
@@ -54,8 +58,8 @@ describe('Contains a component inside of a parent', () => {
       });
 
       it('should throw an error when using contains', () => {
-        (() => wrapper.should.contain(<Apple name="Bob" />))
-          .should.throwError();
+        (() =>
+          wrapper.should.contain(<Apple name="Bob" />)).should.throwError();
       });
     });
   });

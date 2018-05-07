@@ -3,7 +3,7 @@ import should from 'should';
 
 const Assertion = should.Assertion;
 
-Assertion.add('present', function(){
+Assertion.add('present', function() {
   const wrapper = WrapperBuilder(this.obj);
 
   this.params = {

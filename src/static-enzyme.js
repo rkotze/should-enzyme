@@ -1,4 +1,4 @@
-import BaseEnzyme from "./base-enzyme";
+import BaseEnzyme from './base-enzyme';
 
 export default class StaticEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
@@ -8,7 +8,7 @@ export default class StaticEnzyme extends BaseEnzyme {
 
   get element() {
     if (!this.__element) {
-      if (this.enzyme.first()["0"].type === "root") {
+      if (this.enzyme.first()['0'].type === 'root') {
         this.__element = this.enzyme.children().first();
       } else {
         this.__element = this.enzyme.first();
@@ -28,24 +28,24 @@ export default class StaticEnzyme extends BaseEnzyme {
 
   prop() {
     throw new Error(
-      "Enzyme static render method (Cheerio) does not support React props."
+      'Enzyme static render method (Cheerio) does not support React props.'
     );
   }
 
   props() {
     throw new Error(
-      "Enzyme static render method (Cheerio) does not support React props."
+      'Enzyme static render method (Cheerio) does not support React props.'
     );
   }
 
   state() {
     throw new Error(
-      "Enzyme static render method (Cheerio) does not support React state."
+      'Enzyme static render method (Cheerio) does not support React state.'
     );
   }
 
   classNames() {
-    return this.attr("class");
+    return this.attr('class');
   }
 
   hasClass(className) {
@@ -57,7 +57,7 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   checked() {
-    return this.element.is(":checked");
+    return this.element.is(':checked');
   }
 
   containNodes() {
@@ -67,6 +67,6 @@ export default class StaticEnzyme extends BaseEnzyme {
   }
 
   isDisabled() {
-    return this.element.is(":disabled");
+    return this.element.is(':disabled');
   }
 }

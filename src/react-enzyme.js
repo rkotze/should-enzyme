@@ -1,4 +1,4 @@
-import BaseEnzyme from "./base-enzyme";
+import BaseEnzyme from './base-enzyme';
 
 export default class ReactEnzyme extends BaseEnzyme {
   constructor(enzymeWrapper) {
@@ -17,7 +17,7 @@ export default class ReactEnzyme extends BaseEnzyme {
   }
 
   hasClass(className) {
-    const classNameList = this.classNames().split(" ");
+    const classNameList = this.classNames().split(' ');
     return classNameList.indexOf(className) > -1;
   }
 

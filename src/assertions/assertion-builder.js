@@ -2,7 +2,7 @@ import WrapperBuilder from '../wrapper';
 import should from 'should';
 
 let Assertion = should.Assertion,
-slice = Array.prototype.slice;
+  slice = Array.prototype.slice;
 /**
  * assertionBuilder: extend shouldjs api and access ShouldEnzyme wrapper to assert with.
  *
@@ -19,11 +19,11 @@ export function assertionBuilder(
   name,
   assertFn,
   failMessageFn,
-  wrapperBuilder = WrapperBuilder) {
-
+  wrapperBuilder = WrapperBuilder
+) {
   Assertion.add(name, function() {
     const wrapper = wrapperBuilder(this.obj),
-    args = slice.call(arguments);
+      args = slice.call(arguments);
 
     this.params = {
       message: failMessageFn.apply(wrapper, args)
@@ -31,5 +31,4 @@ export function assertionBuilder(
 
     should(assertFn.apply(wrapper, args)).be.true(' ');
   });
-
 }

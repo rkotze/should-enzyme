@@ -8,9 +8,8 @@ export default class ShallowEnzyme extends BaseEnzyme {
   }
 
   get element() {
-    if(!this.__element)
-      this.__element = $(this.enzyme.html());
-    
+    if (!this.__element) this.__element = $(this.enzyme.html());
+
     return this.__element;
   }
 
@@ -30,8 +29,7 @@ export default class ShallowEnzyme extends BaseEnzyme {
     return this.element.is(':checked');
   }
 
-  isDisabled(){
+  isDisabled() {
     return this.element.is(':disabled');
   }
-
 }
