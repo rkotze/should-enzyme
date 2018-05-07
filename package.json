@@ -10,7 +10,8 @@
     "js-style": "eslint ./src/",
     "js-style-fix": "eslint ./src/ --fix",
     "compile": "babel -d lib/ src/ --ignore *spec.js",
-    "prepublish": "npm run test && npm run compile"
+    "prepublishOnly": "npm run test",
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,7 @@
   "license": "MIT",
   "author": "Richard Kotze <richkotze@outlook.com>",
   "peerDependencies": {
-    "should": "^8 || ^9 || ^10 || ^11",
+    "should": "^8 || ^9 || ^10 || ^11 || ^12 || ^13",
     "cheerio": "^0.19 || ^0.20 || ^0.22 || ^1.0.0-0",
     "enzyme": "^1.0.0 || ^2.0.0 || ^3.0.0"
   },
