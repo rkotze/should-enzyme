@@ -47,7 +47,7 @@
     "react-element-to-jsx-string": "^13.2.0"
   },
   "devDependencies": {
-    "ajv": "^5.5.2",
+    "ajv": "^6.12.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
